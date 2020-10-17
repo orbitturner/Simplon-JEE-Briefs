@@ -4,7 +4,7 @@
 
 # ⬇ ___REPOSITORY INFORMATIONS___ 🌐
 
-> ** This repository is not an active Project but just a means of follow-up on individual evolutions concerning DEV WEB practical work from SIMPLON  P3**
+> ** This repository is not an active Project but just a means of follow-up on individual evolutions concerning JEE DEV WEB practical work from SIMPLON  P3**
 
 
 

@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\devReposit\simplonJEE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\devReposit\simplonJEE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SenForage_JSP_Servlet_1" path="/SenForage_JSP_Servlet_1" reloadable="true" source="org.eclipse.jst.jee.server:SenForage_JSP_Servlet_1"/></Host>
+      <Context docBase="C:\devReposit\SimplonJEE-Projects\ECLIPSE_WORKSPACE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\devReposit\SimplonJEE-Projects\ECLIPSE_WORKSPACE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SenForage_JSP_Servlet_1" path="/SenForage_JSP_Servlet_1" reloadable="true" source="org.eclipse.jst.jee.server:SenForage_JSP_Servlet_1"/></Host>
     </Engine>
   </Service>
 </Server>
