@@ -33,8 +33,8 @@ public class WelcomeServlet extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        // VarDumper.vardump( response, request );
-        ViewRenderer.render( this.currentClass, request, response, "Accueil - SEN FORAGE", "home" );
+        ViewRenderer.render( this.currentClass, request, response, "Admin Dashboard - SEN FORAGE",
+                "home" );
 
     }
 

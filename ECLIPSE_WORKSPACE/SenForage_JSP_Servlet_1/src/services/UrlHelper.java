@@ -61,4 +61,13 @@ public class UrlHelper {
     public static String getTheme() {
         return "/WEB-INF/view/template/OrbitLayout.jsp";
     }
+
+    /**
+     * The Login Repository
+     * 
+     * @return String
+     */
+    public static String getLoginRepos() {
+        return project_base + "resources/login/";
+    }
 }

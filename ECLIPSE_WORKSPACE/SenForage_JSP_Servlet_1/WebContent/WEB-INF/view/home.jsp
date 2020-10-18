@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 
 <%-- <c:set var="pageTitle" scope="request">Acceuil - SEN FORAGE</c:set>--%>
-<%-- <jsp:include page="template/header.jsp"></jsp:include> --%>
+
 		<!-- Main content -->
 		<section class="content">
 			<div class="row">
@@ -506,4 +506,3 @@
 		</section>
 		<!-- /.content -->
 		
-<%-- <jsp:include page="template/footer.jsp"></jsp:include> --%>

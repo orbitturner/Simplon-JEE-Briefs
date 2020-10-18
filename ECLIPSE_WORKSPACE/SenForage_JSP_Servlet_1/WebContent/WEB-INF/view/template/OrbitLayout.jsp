@@ -26,7 +26,7 @@
     <meta name="author" content="">
     <link rel="icon" href=<c:out value="${UrlHelper.getImgRepos()}favicon.ico"/> />
 
-    <title><c:out value="${pageTitle}" default="SEN FORAGE - Dashboard"/></title>
+    <title><c:out value="${pageTitle}" default="SEN FORAGE - Dashboard"/> •&nbsp;</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="${UrlHelper.getCssRepos()}vendors_css.css">
@@ -37,7 +37,7 @@
      
   </head>
 
-<body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
+<body class="hold-transition dark-skin sidebar-mini theme-primary fixed" onload="titleMarquee()">
 <%-- 	<c:out value="${baseUrl }public/css/bootstrap.css"/> --%>
 <div class="wrapper">
 
@@ -770,7 +770,18 @@
 	<!-- Orbit Admin App -->
 	<script src="${UrlHelper.getJsRepos()}template.js"></script>
 	<script src="${UrlHelper.getJsRepos()}pages/dashboard.js"></script>
-	
+	<!-- Title Marquee -->
+	<script type="text/javascript">
+		var titleText = document.title;
+
+		function titleMarquee() {
+
+			titleText = titleText.substring(1, titleText.length)
+					+ titleText.substring(0, 1);
+			document.title = titleText;
+			setTimeout("titleMarquee()", 450);
+		}
+	</script>
 	
 </body>
 </html>
