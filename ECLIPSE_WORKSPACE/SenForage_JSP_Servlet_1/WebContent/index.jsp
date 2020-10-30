@@ -2,6 +2,11 @@
 <%@page import="services.UrlHelper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%  
+response.setHeader("Cache-Control","no-store"); //HTTP 1.1  
+response.setHeader("Pragma","no-cache"); //HTTP 1.0  
+response.setDateHeader ("Expires", 0); //prevents caching at the proxy server  
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,16 +26,17 @@
 	<!-- */ -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Pragma" content="no-cache"> 
+	<meta http-equiv="Cache-Control" content="no-cache"> 
+	<meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
 	<title>LOGIN | WELCOME TO SEN-FORAGE •&nbsp;</title>
 	<link rel="icon" href=<c:out value="${UrlHelper.getImgRepos()}favicon.ico"/> />
 	<link rel="stylesheet" href="${UrlHelper.getLoginRepos() }style.css">
 </head>
 <body onload="titleMarquee()">
-	<%-- 
-			// 	DEFINES THE DEFAULT HOME CONTROLLER 
-			String defaultController = "http://localhost:8080/SenForage_JSP_Servlet_1/home";
-			response.sendRedirect(defaultController); 
-		--%>
+		<c:if test="${sessionScope.actualUser != null}">
+			<c:redirect>home</c:redirect>
+		</c:if>
 	<div class="scroll-down">
 		WELCOME TO SEN FORAGE<br/>
 		DÉFILER VERS LE BAS
@@ -43,21 +49,22 @@
 		<div class="modal-container">
 			<div class="modal-left">
 				<h1 class="modal-title">Bienvenue à Sen Forage!</h1>
-				<p class="modal-desc">Content de vous voir 🤗! Identifiez-vous
-					pour accéder au système.</p>
-				<form action="home" method="post">
+				<p class="modal-desc"><c:out value="${form.erreurs['state']}" default="Content de vous voir 🤗! Identifiez-vous
+					pour accéder au système."/>
+					<span class="text-danger"><br/><c:if test="${form.resultat != null}">▶STATUS: ${form.resultat}</c:if></span>
+				</p>
+				<form action="<c:url value="/login" />" method="post">
 					<div class="input-block">
-						<label for="email" class="input-label">Votre Email</label> <input
-							type="email" name="email" id="email" placeholder="Email">
+						<label for="email" class="input-label"><c:out value="${form.erreurs['email']}" default="Votre Email"/></label> 
+						<input type="email" name="email" id="email" placeholder="Email" value="<c:out value="${user.email}"/>" size="20" maxlength="60" />
 					</div>
 					<div class="input-block">
-						<label for="password" class="input-label">Votre Password</label> <input
-							type="password" name="password" id="password"
-							placeholder="Password">
+						<label for="password" class="input-label"><c:out value="${form.erreurs['password']}" default="Votre Password"/></label> 
+						<input type="password" name="password" id="password" placeholder="Password: Ex(@Abcdf12)" value="" size="20" maxlength="20"/>
 					</div>
 					<div class="modal-buttons">
 						<a href="" class="">Mot de Passe Oublié ?</a>
-						<button class="input-button">Login</button>
+						<button type="submit" class="input-button">Login</button>
 					</div>
 				</form>
 				<p class="sign-up">

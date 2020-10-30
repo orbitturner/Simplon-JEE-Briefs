@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@page import="services.UrlHelper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -72,7 +73,10 @@
 		
       <div class="navbar-custom-menu r-side">
         <ul class="nav navbar-nav">
-		  <!-- full Screen -->
+        	<li class="btn-group nav-item welcome-message">
+        		<a class="nav-link">Welcome : ${sessionScope.actualUser.username} 👋🏿</a>
+        	</li>
+		  <!-- Search-Bar -->
 	      <li class="search-bar">		  
 			  <div class="lookup lookup-circle lookup-right">
 			     <input type="text" name="s">
@@ -147,15 +151,19 @@
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img src="${UrlHelper.getImgRepos()}avatar/1.jpg" alt="">
+				<img src="${UrlHelper.getImgRepos()}avatar/1.gif" alt="">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
-				 <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
-				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
-				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
+			  	
+			  	 <a class="dropdown-item text-white" href="#"><i class="ti-user mr-2"></i> <span>${sessionScope.actualUser.prenom} ${sessionScope.actualUser.nom} </span></a>
+			 	 <span class="dropdown-item text-white">Connected as : ${sessionScope.actualUser.role.libelle}</span>
+			 	 <div class="dropdown-divider"></div>
+				 <a class="dropdown-item" href="<c:url value="/profile" />"><i class="ti-user text-muted mr-2"></i> Profile</a>
+				 <a class="dropdown-item" href="mailto:orbitturner@orbitturner.com"><i class="ti-headphone-alt text-muted mr-2"></i> Contact The Admin</a>
+				 <a class="dropdown-item" href="<c:url value="/settings" />"><i class="ti-settings text-muted mr-2"></i> Settings</a>
 				 <div class="dropdown-divider"></div>
-				 <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+				 <a class="dropdown-item logout" href="<c:url value="/logout" />"><i class="ti-lock text-muted mr-2"></i> Logout</a>
 			  </li>
 			</ul>
           </li>	
@@ -177,7 +185,7 @@
 		
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="index.html">
+				 <a href="<c:url value="/home" />">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="${UrlHelper.getImgRepos()}logo-dark.png" alt="">
@@ -187,286 +195,22 @@
 			</div>
         </div>
       
-      <!-- sidebar menu-->
+      <!-- ◾◾◾◾ sidebar menu ◾◾◾◾ -->
       <ul class="sidebar-menu" data-widget="tree">  
-		  
-		<li>
-          <a href="index.html">
-            <i data-feather="pie-chart"></i>
-			<span>Dashboard</span>
-          </a>
-        </li>  
-		
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="message-circle"></i>
-            <span>Application</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="chat.html"><i class="ti-more"></i>Chat</a></li>
-            <li><a href="calendar.html"><i class="ti-more"></i>Calendar</a></li>
-          </ul>
-        </li> 
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="mail"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Inbox</a></li>
-            <li><a href="mailbox_compose.html"><i class="ti-more"></i>Compose</a></li>
-            <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li>
-          </ul>
-        </li>
-		
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="file"></i>
-            <span>Pages</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="ti-more"></i>Profile</a></li>
-            <li><a href="invoice.html"><i class="ti-more"></i>Invoice</a></li>
-            <li><a href="gallery.html"><i class="ti-more"></i>Gallery</a></li>
-            <li><a href="faq.html"><i class="ti-more"></i>FAQs</a></li>
-            <li><a href="timeline.html"><i class="ti-more"></i>Timeline</a></li>
-          </ul>
-        </li> 		  
-		 
-        <li class="header nav-small-cap">User Interface</li>
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="grid"></i>
-            <span>Components</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-            <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
-            <li><a href="components_sliders.html"><i class="ti-more"></i>Sliders</a></li>
-            <li><a href="components_dropdown.html"><i class="ti-more"></i>Dropdown</a></li>
-            <li><a href="components_modals.html"><i class="ti-more"></i>Modal</a></li>
-            <li><a href="components_nestable.html"><i class="ti-more"></i>Nestable</a></li>
-            <li><a href="components_progress_bars.html"><i class="ti-more"></i>Progress Bars</a></li>
-          </ul>
-        </li>
-		
-		<li class="treeview">
-          <a href="#">
-            <i data-feather="credit-card"></i>
-            <span>Cards</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-			<li><a href="card_advanced.html"><i class="ti-more"></i>Advanced Cards</a></li>
-			<li><a href="card_basic.html"><i class="ti-more"></i>Basic Cards</a></li>
-			<li><a href="card_color.html"><i class="ti-more"></i>Cards Color</a></li>
-		  </ul>
-        </li>  
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="hard-drive"></i>
-            <span>Content</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="content_typography.html"><i class="ti-more"></i>Typography</a></li>
-            <li><a href="content_media.html"><i class="ti-more"></i>Media</a></li>
-            <li><a href="content_grid.html"><i class="ti-more"></i>Grid</a></li>
-          </ul>
-        </li>
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="package"></i>
-            <span>Utilities</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="utilities_border.html"><i class="ti-more"></i>Border</a></li>
-            <li><a href="utilities_color.html"><i class="ti-more"></i>Color</a></li>
-            <li><a href="utilities_ribbons.html"><i class="ti-more"></i>Ribbons</a></li>
-            <li><a href="utilities_tab.html"><i class="ti-more"></i>Tabs</a></li>
-            <li><a href="utilities_animations.html"><i class="ti-more"></i>Animation</a></li>
-          </ul>
-        </li>
-		  
-		<li class="treeview">
-          <a href="#">
-            <i data-feather="edit-2"></i>
-            <span>Icons</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="icons_fontawesome.html"><i class="ti-more"></i>Font Awesome</a></li>
-            <li><a href="icons_glyphicons.html"><i class="ti-more"></i>Glyphicons</a></li>
-            <li><a href="icons_material.html"><i class="ti-more"></i>Material Icons</a></li>	
-            <li><a href="icons_themify.html"><i class="ti-more"></i>Themify Icons</a></li>
-            <li><a href="icons_simpleline.html"><i class="ti-more"></i>Simple Line Icons</a></li>
-            <li><a href="icons_cryptocoins.html"><i class="ti-more"></i>Cryptocoins Icons</a></li>
-            <li><a href="icons_flag.html"><i class="ti-more"></i>Flag Icons</a></li>
-            <li><a href="icons_weather.html"><i class="ti-more"></i>Weather Icons</a></li>
-          </ul>
-        </li> 
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="inbox"></i>
-			<span>Forms</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="forms_advanced.html"><i class="ti-more"></i>Advanced Elements</a></li>
-            <li><a href="forms_editors.html"><i class="ti-more"></i>Editors</a></li>
-            <li><a href="forms_code_editor.html"><i class="ti-more"></i>Code Editor</a></li>
-            <li><a href="forms_validation.html"><i class="ti-more"></i>Form Validation</a></li>
-            <li><a href="forms_wizard.html"><i class="ti-more"></i>Form Wizard</a></li>
-            <li><a href="forms_general.html"><i class="ti-more"></i>General Elements</a></li>
-            <li><a href="forms_dropzone.html"><i class="ti-more"></i>Dropzone</a></li>
-          </ul>
-        </li>
-		<li class="treeview">
-          <a href="#">
-            <i data-feather="server"></i>
-			<span>Tables</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="tables_simple.html"><i class="ti-more"></i>Simple tables</a></li>
-            <li><a href="tables_data.html"><i class="ti-more"></i>Data tables</a></li>
-          </ul>
-        </li>
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="charts_chartjs.html"><i class="ti-more"></i>ChartJS</a></li>
-            <li><a href="charts_flot.html"><i class="ti-more"></i>Flot</a></li>
-            <li><a href="charts_inline.html"><i class="ti-more"></i>Inline</a></li>	
-            <li><a href="charts_morris.html"><i class="ti-more"></i>Morris</a></li>
-            <li><a href="charts_peity.html"><i class="ti-more"></i>Peity</a></li>
-            <li><a href="charts_chartist.html"><i class="ti-more"></i>Chartist</a></li>
-          </ul>
-        </li>  
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="map"></i>
-			<span>Map</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="map_google.html"><i class="ti-more"></i>Google Map</a></li>
-            <li><a href="map_vector.html"><i class="ti-more"></i>Vector Map</a></li>
-          </ul>
-        </li> 			  
-		  
-		<li class="treeview">
-          <a href="#">
-            <i data-feather="alert-triangle"></i>
-			<span>Authentication</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="auth_login.html"><i class="ti-more"></i>Login</a></li>
-			<li><a href="auth_register.html"><i class="ti-more"></i>Register</a></li>
-			<li><a href="auth_lockscreen.html"><i class="ti-more"></i>Lockscreen</a></li>
-			<li><a href="auth_user_pass.html"><i class="ti-more"></i>Password</a></li>
-			<li><a href="error_404.html"><i class="ti-more"></i>Error 404</a></li>
-			<li><a href="error_maintenance.html"><i class="ti-more"></i>Maintenance</a></li>	
-          </ul>
-        </li> 		  		  
-		  
-		<li class="header nav-small-cap">EXTRA</li>		  
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="layers"></i>
-			<span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Level One</a></li>
-            <li class="treeview">
-              <a href="#">Level One
-                <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#">Level Two</a></li>
-                <li class="treeview">
-                  <a href="#">Level Two
-                    <span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#">Level Three</a></li>
-                    <li><a href="#">Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#">Level One</a></li>
-          </ul>
-        </li>  
-		  
-		<li>
-          <a href="auth_login.html">
-            <i data-feather="lock"></i>
-			<span>Log Out</span>
-          </a>
-        </li> 
-        
+		<%-- ======= SIDEBAR DEPENDING ON USER ROLE ======= --%>
+		<c:import url="/WEB-INF/view/template/${sessionScope.actualUser.role.libelle}.menu.jsp"></c:import>
+		<%-- ======= FIN SIDEBAR DEPENDING ON USER ROLE ======= --%>
       </ul>
+      <!-- ◾◾◾◾ end of sidebar menu ◾◾◾◾ -->
     </section>
 	
 	<div class="sidebar-footer">
 		<!-- item-->
-		<a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
+		<a href="<c:url value="/profile" />" class="link" data-toggle="tooltip" title="" data-original-title="Profile" aria-describedby="tooltip92529"><i class="ti-user"></i></a>
 		<!-- item-->
-		<a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="ti-email"></i></a>
+		<a href="<c:url value="/calendar" />" class="link" data-toggle="tooltip" title="" data-original-title="Calendar"><i class="ti-calendar"></i></a>
 		<!-- item-->
-		<a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i></a>
+		<a href="<c:url value="/logout" />" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i></a>
 	</div>
   </aside>
 
@@ -474,23 +218,34 @@
   <div class="content-wrapper">
 	  <div class="container-full">
 		<%-- ======= CONTENU DE LA PAGE ======= --%>
+		<%-- <c:out value="${view }"></c:out> --%>
 		<c:import url="/WEB-INF/view/${view}.jsp"></c:import>
 		<%-- ======= FIN CONTENU DE LA PAGE ======= --%>
       </div>
    </div>
   <!-- ◾◾◾◾ /.content-wrapper ◾◾◾◾ -->
+  
+  <!-- ◾◾◾◾ NOTIFICATION / ALERTS ◾◾◾◾ -->
+  <div class="d-none">
+		<h4>Alert Full top </h4>
+		<button class="btn btn-success btn-outline btn-sm showtop btn-block mb-15" id="alertUserCreated">Alert Top Full width</button>
+		<!-- Start an Alert -->
+	</div>
+		<div class="myadmin-alert myadmin-alert-icon myadmin-alert-click alert-success myadmin-alert-top alerttop"> <i class="ti-user"></i> User Successfully Created <a href="#" class="closed">&times;</a> </div>
+  <!-- ◾◾◾◾ END OF NOTIFICATION / ALERTS ◾◾◾◾ -->
+  
   <footer class="main-footer">
     <div class="pull-right d-none d-sm-inline-block">
         <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
 		  <li class="nav-item">
-			<a class="nav-link" href="javascript:void(0)">FAQ</a>
+			<a class="nav-link" href="javascript:void(0)">Help</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">Purchase Now</a>
+			<a class="nav-link" href="https://orbitturner.com" target="_blank">Report a Bug</a>
 		  </li>
 		</ul>
     </div>
-	  &copy; 2020 <a href="#">ORBIT TURNER | FUTURIZE</a>. All Rights Reserved.
+	  &copy; 2020 <a href="<c:url value="https://orbitturner.com" />">ORBIT TURNER | FUTURIZE</a>. All Rights Reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -759,17 +514,54 @@
 </div>
 <!-- ./wrapper -->
   	
-	 
-	<!-- Vendor JS -->
+	<!-- GLOBAL APP JS -->
 	<script src="${UrlHelper.getJsRepos()}vendors.min.js"></script>
     <script src="${UrlHelper.getResourcesRepos()}assets/icons/feather-icons/feather.min.js"></script>	
-	<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/easypiechart/dist/jquery.easypiechart.js"></script>
-	<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/apexcharts-bundle/irregular-data-series.js"></script>
-	<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-	
+    
+	 <c:if test="${view == 'home'}">	 
+		<!-- Hompage JS -->
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/easypiechart/dist/jquery.easypiechart.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/apexcharts-bundle/irregular-data-series.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+		<script src="${UrlHelper.getJsRepos()}pages/dashboard.js"></script>
+	 </c:if>
+	 
+	<c:if test="${fn:contains(view, 'list') or fn:contains(view, 'show')}">	
+	 	<!-- Data Tables JS -->
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/datatable/datatables.min.js"></script>
+		<script src="${UrlHelper.getJsRepos()}pages/data-table.js"></script>
+	</c:if>
+	<c:if test="${fn:contains(view, 'create')}">
+		<!-- FORMS JS -->
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/select2/dist/js/select2.full.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/input-mask/jquery.inputmask.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/moment/min/moment.min.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"></script>
+		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/iCheck/icheck.min.js"></script>
+		<script src="${UrlHelper.getJsRepos()}pages/advanced-form-element.js"></script>
+		<script src="${UrlHelper.getJsRepos()}pages/validation.js"></script>
+    	<script src="${UrlHelper.getJsRepos()}pages/form-validation.js"></script>
+	</c:if>	
 	<!-- Orbit Admin App -->
 	<script src="${UrlHelper.getJsRepos()}template.js"></script>
-	<script src="${UrlHelper.getJsRepos()}pages/dashboard.js"></script>
+    <script src="${UrlHelper.getJsRepos()}pages/toastr.js"></script>
+    <script src="${UrlHelper.getJsRepos()}pages/notification.js"></script>
+	
+	<c:if test="${userSuccess == true}">
+			<script>
+				$(document).ready(function() {
+					$("#alertUserCreated").click();
+				});
+			</script>
+	</c:if>
 	<!-- Title Marquee -->
 	<script type="text/javascript">
 		var titleText = document.title;

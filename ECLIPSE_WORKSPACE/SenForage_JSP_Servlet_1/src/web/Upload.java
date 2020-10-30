@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Fichier;
+import entities.Fichier;
 import services.UploadForm;
 
 /* === 🌌 WELCOME TO ORBIT JEE REMIX 🌌  ===

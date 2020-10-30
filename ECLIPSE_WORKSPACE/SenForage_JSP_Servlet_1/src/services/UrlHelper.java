@@ -9,6 +9,15 @@ public class UrlHelper {
     private static String project_base = "http://localhost:8080/SenForage_JSP_Servlet_1/";
 
     /**
+     * Get The Project Base URL PATH
+     * 
+     * @return String
+     */
+    public static String getProjectBase() {
+        return project_base;
+    }
+
+    /**
      * Resources BaseUrl Repository
      * 
      * @return String

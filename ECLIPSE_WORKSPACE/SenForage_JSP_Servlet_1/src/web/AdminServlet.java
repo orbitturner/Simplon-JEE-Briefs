@@ -36,14 +36,19 @@ public class AdminServlet extends HttpServlet {
 
         // METHOD SWITCHER
         switch ( action ) {
-        case "/admin": {
+        case "/admin":
             ViewRenderer.render( this.currentClass, request, response, "Admin Dashboard - SEN FORAGE",
                     "admin/dashboard" );
-            // yield type;
-        }
+            break;
+
+        case "/admin/user/create":
+
+            break;
+
         default:
             // throw new IllegalArgumentException( "Unexpected value: " + action
             // );
+            break;
         }
     }
 

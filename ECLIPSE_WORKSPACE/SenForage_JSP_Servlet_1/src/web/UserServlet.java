@@ -1,29 +1,43 @@
 package web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dao.RolesDao;
+import dao.RolesDaoImpl;
+import dao.UserDao;
+import dao.UserDaoImpl;
+import entities.User;
+import forms.InscriptionForm;
+import services.UrlHelper;
 import services.ViewRenderer;
 
 /**
  * Servlet implementation class UserServlet
  */
-@WebServlet( name = "User", description = "Main Users Servlet", urlPatterns = { "/user", "/user/new" } )
+@WebServlet( name = "User", description = "Main Users Servlet", urlPatterns = { "/users", "/users/new" } )
 public class UserServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private final HttpServlet currentClass     = this;
+    private static final long  serialVersionUID = 1L;
+    private final HttpServlet  currentClass     = this;
+    public static final String ACT_USERS_LIST   = "usersList";
+    // A DEPLACER VERS ROLES
+    public static final String ACT_ROLES_LIST   = "rolesList";
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    private RolesDao           rolesdao;
+    private UserDao            userdao;
+
+    @Override
+    public void init() throws ServletException {
+        // TODO Auto-generated method stub
+        this.userdao = new UserDaoImpl();
+        this.rolesdao = new RolesDaoImpl();
     }
 
     /**
@@ -34,18 +48,44 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException {
         // Gets The Method Called From The URL
         String action = request.getServletPath();
+        String page = "404";
+        String title = "NONE";
+
+        /* Récupération de la session depuis la requête */
+        HttpSession session = request.getSession();
+
+        /*
+         * Si la Liste des clients n'existe pas en session, alors l'utilisateur
+         * se connecte pour la première fois et nous devons précharger en
+         * session les infos contenues dans la BDD.
+         */
+        if ( session.getAttribute( ACT_USERS_LIST ) == null ) {
+            List<?> usersList = userdao.getAllActiveUser();
+            List<?> rolesList = rolesdao.getAllRoles();
+            session.setAttribute( ACT_USERS_LIST, usersList );
+            session.setAttribute( ACT_ROLES_LIST, rolesList );
+        }
 
         // METHOD SWITCHER
         switch ( action ) {
-        case "/user": {
-            ViewRenderer.render( this.currentClass, request, response, "Admin Dashboard - SEN FORAGE",
-                    "admin/dashboard" );
-            // yield type;
-        }
+        case "/users":
+            title = "Users List - SEN FORAGE";
+            page = "user/list";
+            break;
+
+        case "/users/new":
+            title = "Create a Users - SEN FORAGE";
+            page = "user/create";
+            break;
+
         default:
             // throw new IllegalArgumentException( "Unexpected value: " + action
             // );
+            break;
         }
+
+        ViewRenderer.render( this.currentClass, request, response, title,
+                page );
     }
 
     /**
@@ -54,8 +94,26 @@ public class UserServlet extends HttpServlet {
      */
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet( request, response );
-    }
+        /* Préparation de l'objet formulaire */
+        InscriptionForm form = new InscriptionForm();
 
+        /* Traitement de la requête et récupération du bean en résultant */
+        User utilisateur = form.inscrireUtilisateur( request );
+
+        /**
+         * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
+         * Utilisateur à la session, sinon suppression du bean de la session.
+         */
+        if ( utilisateur != null ) {
+            request.setAttribute( "userSuccess", true );
+            response.sendRedirect( UrlHelper.getProjectBase() + "users" );
+        } else {
+
+            /* Stockage du formulaire et du bean dans l'objet request */
+            request.setAttribute( "form", form );
+            request.setAttribute( "user", utilisateur );
+
+            ViewRenderer.render( currentClass, request, response, "Create a Users - SEN FORAGE", "user/create" );
+        }
+    }
 }

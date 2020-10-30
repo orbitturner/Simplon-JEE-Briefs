@@ -35,4 +35,10 @@ public class VarDumper {
                 .append( "⮕ " + String.valueOf( objet ) )
                 .append( "\n\n<h1>==== TOSTRING() CONTENT  ====</h1>\n⮕ " + objet.toString() );
     }
+
+    public static void echo( HttpServletResponse response, Object message ) throws IOException {
+        response.setContentType( "text/html;charset=UTF-8" );
+        response.getWriter()
+                .append( "\n<h1>==== Echo ====</h1>\n" + "⮕ " + String.valueOf( message ) );
+    }
 }

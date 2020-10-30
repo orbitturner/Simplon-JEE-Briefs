@@ -479,6 +479,20 @@ hr {
 #image-popups img {
   border-radius: 15px; }
 
+.welcome-message{
+    padding: 15px 0 15px;
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+.logout{
+	/*color: #dc143c !important;*/
+	font-weight: 600;
+}
+.logout:hover{
+	background-color: #dc143c !important;
+	color: white !important;
+}
 /*---border radius---*/
 .rounded0 {
   border-radius: 0px; }

@@ -3,15 +3,15 @@
 	<section name="ImportExportAction">
 	</section>
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jst.servlet.ui.internal.wizard.AddFilterWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 	</section>
 	<section name="PreferencesExportWizard">
 		<item key="" value="C:\devReposit\SimplonJEE-Projects\ECLIPSE_WORKSPACE\Eclipse Theme4.epf"/>
 		<item key="WizardPreferencesExportPage1.STORE_OVERWRITE_EXISTING_FILES_ID" value="true"/>
 		<item key="WizardPreferencesExportPage1.EXPORT_ALL_PREFERENCES_ID" value="false"/>
-		<item key="" value="C:\devReposit\SimplonJEE-Projects\ECLIPSE_WORKSPACE\Eclipse Theme4.epf"/>
 		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
 			<item value="C:\devReposit\SimplonJEE-Projects\ECLIPSE_WORKSPACE\Eclipse Theme4.epf"/>
 		</list>

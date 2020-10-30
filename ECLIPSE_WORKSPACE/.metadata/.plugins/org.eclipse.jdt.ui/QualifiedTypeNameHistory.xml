@@ -1,2 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="model.Fichier"/>
+    <fullyQualifiedTypeName name="model.Utilisateur"/>
+    <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxCrud.Collection"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="entities.User"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="services.MyValidator"/>
+    <fullyQualifiedTypeName name="forms.InscriptionForm"/>
+    <fullyQualifiedTypeName name="entities.Utilisateur"/>
+    <fullyQualifiedTypeName name="entities.Roles"/>
+    <fullyQualifiedTypeName name="dao.RolesDao"/>
+    <fullyQualifiedTypeName name="dao.RolesDaoImpl"/>
+    <fullyQualifiedTypeName name="dao.EntityHelper"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
+    <fullyQualifiedTypeName name="dao.UserDaoImpl"/>
+    <fullyQualifiedTypeName name="services.ViewRenderer"/>
+    <fullyQualifiedTypeName name="sun.jvm.hotspot.oops.java_lang_Class"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="services.VarDumper"/>
+</qualifiedTypeNameHistroy>

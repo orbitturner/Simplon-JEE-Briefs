@@ -11,13 +11,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet Filter implementation class AppFilter
  */
-@WebFilter( "/*" )
+@WebFilter( { "/*", "/" } )
 public class AppFilter implements Filter {
-    private static final Boolean DEBUG_MODE = false;
+    // Adding Debug Mode - True => Pass
+    private static final Boolean DEBUG_MODE     = false;
+    private static final String  USER_SESS_DATA = "actualUser";
+    private static final String  LOGIN          = "/login";
 
     /**
      * @see Filter#destroy()
@@ -36,24 +40,44 @@ public class AppFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
 
-        // Auth
-        // Boolean pass = true;
-
         /* Non-filtrage des ressources statiques */
-        String chemin = req.getRequestURI().substring(
-                req.getContextPath().length() );
+        String chemin = req.getRequestURI().substring( req.getContextPath().length() );
         if ( chemin.startsWith( "/resources" ) ) {
             chain.doFilter( req, resp );
             return;
         }
 
+        // String action = req.getServletPath();
+        // if ( chemin != null ) {
+        // if ( chemin.contains( "/resources" ) ) {
+        // chain.doFilter( req, resp );
+        // return;
+        // }
+        // }
+        /* Création ou récupération de la session */
+        HttpSession session = req.getSession();
+
         // pass the request along the filter chain
         if ( !DEBUG_MODE ) {
-            chain.doFilter( req, resp );
+            // If we don't have data on the actual Connected user in session
+            if ( session.getAttribute( USER_SESS_DATA ) == null ) {
+                /* Redirection vers la page publique */
+                req.getRequestDispatcher( LOGIN ).forward( req, resp );
+            } else {
+                /*
+                 * if ( chemin != null && chemin.startsWith( "/login" ) ) { //
+                 * resp.sendRedirect( "home" ); // req.getRequestDispatcher(
+                 * "home" ).forward( req, resp ); } else { chain.doFilter( req,
+                 * resp ); }
+                 */
+                chain.doFilter( req, resp );
+            }
         } else {
-            resp.sendRedirect( req.getContextPath() + "/index.jsp" );
+            // IF WE ARE IN DEBUG MODE
+            // resp.sendRedirect( "admin/" );
+            chain.doFilter( req, resp );
         }
-        //
+
     }
 
     /**

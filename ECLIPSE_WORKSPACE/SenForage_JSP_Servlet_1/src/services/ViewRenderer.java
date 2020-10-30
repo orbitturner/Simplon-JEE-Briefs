@@ -33,6 +33,7 @@ public class ViewRenderer {
      * \/WEB-INF/view/template/OrbitLayout.jsp
      */
     private static final String THEME = UrlHelper.getTheme();
+    private static final String LOGIN = "/index.jsp";
 
     /**
      * Render an View depending on :
@@ -55,4 +56,12 @@ public class ViewRenderer {
 
     }
 
+    public static void renderLogin( HttpServlet currentClass, HttpServletRequest request, HttpServletResponse response,
+            String pageTitle ) throws ServletException, IOException {
+
+        request.setAttribute( "pageTitle", pageTitle );
+
+        currentClass.getServletContext().getRequestDispatcher( LOGIN ).forward( request, response );
+
+    }
 }
