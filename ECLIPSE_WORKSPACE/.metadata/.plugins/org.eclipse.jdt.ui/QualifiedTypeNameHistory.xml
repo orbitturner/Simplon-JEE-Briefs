@@ -32,4 +32,7 @@
     <fullyQualifiedTypeName name="dao.DAOException"/>
     <fullyQualifiedTypeName name="services.ViewRenderer"/>
     <fullyQualifiedTypeName name="services.UrlHelper"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="metier.entities.Roles"/>
+    <fullyQualifiedTypeName name="metier.entities.User"/>
 </qualifiedTypeNameHistroy>
