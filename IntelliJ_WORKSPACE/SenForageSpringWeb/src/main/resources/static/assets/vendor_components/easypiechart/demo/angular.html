@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Angular</title>
+    <meta content="width=device-width" name="viewport"/>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<ul>
+    <li><a href="index.html">Vanilla JS</a></li>
+    <li><a href="jquery.html">jQuery plugin</a></li>
+    <li><a class="active" href="angular.html">Angular module</a></li>
+    <li><a href="requirejs.html">RequireJS module</a></li>
+</ul>
+
+<div class="angular" ng-controller="chartCtrl">
+		<span class="chart" easypiechart
+              ng-init="options = { animate:false, barColor:'#E67E22', scaleColor:false, lineWidth:3, lineCap:'butt' }"
+              options="options" percent="percent">
+			<span class="percent" ng-bind="percent"></span>
+		</span>
+    <input max="100" min="-100" ng-model="percent" step="1" type="range"/>
+    <span class="chart" easypiechart options="anotherOptions" percent="anotherPercent">
+			<span class="percent" ng-bind="percent"></span>
+		</span>
+    <input max="100" min="-100" ng-model="anotherPercent" step="1" type="range"/>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js"></script>
+<script src="../dist/angular.easypiechart.min.js"></script>
+<script>
+    var app = angular.module('app', ['easypiechart']);
+    app.controller('chartCtrl', ['$scope', function ($scope) {
+        $scope.percent = 65;
+        $scope.anotherPercent = -45;
+        $scope.anotherOptions = {
+            animate: {
+                duration: 0,
+                enabled: false
+            },
+            barColor: '#2C3E50',
+            scaleColor: false,
+            lineWidth: 20,
+            lineCap: 'circle'
+        };
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../reset.css" rel="stylesheet"/>
+        <link href="./style.css" rel="stylesheet"/>
+
+        <title>MixItUp Demo - Basic (IE8 Compatible Layout)</title>
+    </head>
+    <body>
+        <div class="controls">
+            <button class="control" data-filter="all" type="button"></button>
+            <button class="control" data-filter=".green" type="button"></button>
+            <button class="control" data-filter=".blue" type="button"></button>
+            <button class="control" data-filter=".pink" type="button"></button>
+            <button class="control" data-filter="none" type="button"></button>
+
+            <button class="control" data-sort="default:asc" type="button">Asc</button>
+            <button class="control" data-sort="default:desc" type="button">Desc</button>
+        </div>
+
+        <div class="container">
+            <div class="mix green"></div>
+            <div class="mix green"></div>
+            <div class="mix blue"></div>
+            <div class="mix pink"></div>
+            <div class="mix green"></div>
+            <div class="mix blue"></div>
+            <div class="mix pink"></div>
+            <div class="mix blue"></div>
+
+            <div class="gap"></div>
+            <div class="gap"></div>
+            <div class="gap"></div>
+        </div>
+
+        <script src="../mixitup.min.js"></script>
+
+        <script>
+            var containerEl = document.querySelector('.container');
+
+            var mixer = mixitup(containerEl);
+        </script>
+    </body>
+</html>

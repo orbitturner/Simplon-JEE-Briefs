@@ -1,44 +1,44 @@
 package com.senforage.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Client {
+public class Client implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
-    private Long    id;
+    private Long              id;
 
     @Column( nullable = false, length = 50 )
-    private String  nom;
+    private String            nom;
 
     @Column( nullable = false, length = 75 )
-    private String  prenom;
+    private String            prenom;
 
     @Column( nullable = false, length = 255 )
-    private String  adresse;
+    private String            adresse;
 
     @Column( nullable = false, length = 100 )
-    private String  telephone;
+    private String            telephone;
 
     @ManyToOne( optional = false )
     @JoinColumn( name = "ID_VILLAGE", referencedColumnName = "id", nullable = false )
-    private Village village;
+    private Village           village;
 
     @Column( nullable = false, length = 255 )
-    private String  created_at;
+    private String            created_at;
 
     @ManyToOne( optional = false )
     @JoinColumn( name = "ID_USER", referencedColumnName = "id", nullable = false )
-    private User    created_by;
+    private User              created_by;
 
     @Column( nullable = false, length = 2 )
-    private int     state;
+    private int               state;
 
     // ====== CONSTRUCTOR ======
     /**

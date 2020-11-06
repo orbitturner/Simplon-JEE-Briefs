@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../reset.css" rel="stylesheet"/>
+        <link href="./style.css" rel="stylesheet"/>
+
+        <title>MixItUp Demo - Filtering by Text Input</title>
+    </head>
+    <body>
+        <div class="controls">
+            <button class="control" data-filter="all" type="button">All</button>
+            <button class="control" data-filter=".green" type="button">Green</button>
+            <button class="control" data-filter=".blue" type="button">Blue</button>
+            <button class="control" data-filter=".pink" type="button">Pink</button>
+            <button class="control" data-filter="none" type="button">None</button>
+
+            <button class="control" data-sort="default:asc" type="button">Asc</button>
+            <button class="control" data-sort="default:desc" type="button">Desc</button>
+
+            <input class="input" data-ref="input-search" placeholder="Search by color" type="text"/>
+        </div>
+
+        <div class="container" data-ref="container">
+            <div class="mix green"></div>
+            <div class="mix green"></div>
+            <div class="mix blue"></div>
+            <div class="mix pink"></div>
+            <div class="mix green"></div>
+            <div class="mix blue"></div>
+            <div class="mix pink"></div>
+            <div class="mix blue"></div>
+
+            <div class="gap"></div>
+            <div class="gap"></div>
+            <div class="gap"></div>
+        </div>
+
+        <script src="../mixitup.min.js"></script>
+
+        <script>
+            var container = document.querySelector('[data-ref="container"]');
+            var inputSearch = document.querySelector('[data-ref="input-search"]');
+            var keyupTimeout;
+
+            var mixer = mixitup(container, {
+                animation: {
+                    duration: 350
+                },
+                callbacks: {
+                    onMixClick: function() {
+                        // Reset the search if a filter is clicked
+
+                        if (this.matches('[data-filter]')) {
+                            inputSearch.value = '';
+                        }
+                    }
+                }
+            });
+
+            // Set up a handler to listen for "keyup" events from the search input
+
+            inputSearch.addEventListener('keyup', function() {
+                var searchValue;
+
+                if (inputSearch.value.length < 3) {
+                    // If the input value is less than 3 characters, don't send
+
+                    searchValue = '';
+                } else {
+                    searchValue = inputSearch.value.toLowerCase().trim();
+                }
+
+                // Very basic throttling to prevent mixer thrashing. Only search
+                // once 350ms has passed since the last keyup event
+
+                clearTimeout(keyupTimeout);
+
+                keyupTimeout = setTimeout(function() {
+                    filterByString(searchValue);
+                }, 350);
+            });
+
+            /**
+             * Filters the mixer using a provided search string, which is matched against
+             * the contents of each target's "class" attribute. Any custom data-attribute(s)
+             * could also be used.
+             *
+             * @param  {string} searchValue
+             * @return {void}
+             */
+
+            function filterByString(searchValue) {
+                if (searchValue) {
+                    // Use an attribute wildcard selector to check for matches
+
+                    mixer.filter('[class*="' + searchValue + '"]');
+                } else {
+                    // If no searchValue, treat as filter('all')
+
+                    mixer.filter('all');
+                }
+            }
+        </script>
+    </body>
+</html>

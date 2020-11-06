@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../reset.css" rel="stylesheet"/>
+        <link href="./style.css" rel="stylesheet"/>
+
+        <title>MixItUp Demo - Querying via Attribute Selectors</title>
+    </head>
+    <body>
+        <div class="controls">
+            <button class="control" data-filter="all" type="button">All</button>
+            <button class="control" data-filter=".green" type="button">Green</button>
+            <button class="control" data-filter=".blue" type="button">Blue</button>
+            <button class="control" data-filter=".pink" type="button">Pink</button>
+            <button class="control" data-filter="none" type="button">None</button>
+
+            <button class="control" data-sort="default:asc" type="button">Asc</button>
+            <button class="control" data-sort="default:desc" type="button">Desc</button>
+        </div>
+
+        <div class="container" data-ref="mixitup-container">
+            <div class="item green" data-ref="mixitup-target"></div>
+            <div class="item green" data-ref="mixitup-target"></div>
+            <div class="item blue" data-ref="mixitup-target"></div>
+            <div class="item pink" data-ref="mixitup-target"></div>
+            <div class="item green" data-ref="mixitup-target"></div>
+            <div class="item blue" data-ref="mixitup-target"></div>
+            <div class="item pink" data-ref="mixitup-target"></div>
+            <div class="item blue" data-ref="mixitup-target"></div>
+
+            <div class="gap"></div>
+            <div class="gap"></div>
+            <div class="gap"></div>
+        </div>
+
+        <script src="../mixitup.min.js"></script>
+
+        <script>
+            var containerEl = document.querySelector('[data-ref~="mixitup-container"]');
+
+            var mixer = mixitup(containerEl, {
+                selectors: {
+                    target: '[data-ref~="mixitup-target"]'
+                }
+            });
+        </script>
+    </body>
+</html>

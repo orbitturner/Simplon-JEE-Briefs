@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script language="javascript" src="jquery-1.10.2.js" type="text/JavaScript"></script>
+        <script src="jquery-ui-1.10.4.custom.js"></script>
+        <script language="javascript" src="jquery.PrintArea.js" type="text/JavaScript"></script>
+
+        <link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css" />
+
+        <link href="PrintArea.css" rel="stylesheet" type="text/css" />                <!-- Y : rel is stylesheet and media is in [all,print,empty,undefined] -->
+        <link href="media_all.css" media="all" rel="stylesheet"  type="text/css" />   <!-- Y : rel is stylesheet and media is in [all,print,empty,undefined] -->
+        <link href="empty.css" rel=""           type="text/css" />                    <!-- N : rel is not stylesheet -->
+        <link href="noPrint.css" rel="noPrint"    type="text/css" />                  <!-- N : rel is not stylesheet -->
+        <link href="media_none.css" media="xyz" rel="stylesheet" type="text/css" />   <!-- N : media not in [all,print,empty,undefined] -->
+        <link href="no_rel.css"                  media="print"     type="text/css" /> <!-- N : no rel attribute -->
+        <link href="no_rel_no_media.css"                  type="text/css"          /> <!-- N : no rel, no media attributes -->
+    </head>
+<body>
+  <div style="border: solid 2px #999fff; float: left; padding: 5px; margin-bottom: 5px;">
+    <div style="text-align: center;">
+        <span style="font-weight: bold;">Contains content that I want to print</span>
+        <br>
+        This is just a sample page to demonstrate this plugin.
+    </div>
+    <div class="PrintArea area1 all" id="Retain">
+        <div>Print Area 1</div>
+        <span style="color: #000777;">print me</span>
+        <span class="test">xyz</span>
+        <br>
+        <input name="chkTest1" type="checkbox" value="1">
+        <input name="chkTest2" type="checkbox" value="2">
+        <br>
+        <input name="rdoTest3" type="radio" value="3">
+        <input name="rdoTest3" type="radio" value="4">
+        <br>
+        <input name="textTest5" type="text" value="">
+        <br>
+        <select name="selTest6">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+        <select multiple="" name="selTest7">
+            <option value="a">a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
+        </select>
+        <br>
+        <textarea name="textareaTest8"></textarea>
+        <br>
+        <img alt="test" id="img2" src="FoesEnd.jpg" width="200">
+    </div>
+
+    <div style="border: solid 1px #999; margin: 20px 5px; padding: 20px;">
+        I don't want this to print.
+    </div>
+
+    <div class="PrintArea area2 all" style="border-color: #999;">
+        <div>Print Area 2</div>
+        <span style="color: #000777;">print me</span>
+        <span class="test">xyz</span>
+        <br>
+        <input name="chkTest3" type="checkbox" value="1">
+        <input name="chkTest4" type="checkbox" value="2">
+        <br>
+        <input name="rdoTest4" type="radio" value="3">
+        <input name="rdoTest4" type="radio" value="4">
+        <br>
+        <input name="textTest6" type="text" value="">
+        <br>
+        <select name="selTest7">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+        <select multiple="" name="selTest8">
+            <option value="a">a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
+        </select>
+        <br>
+        <textarea name="textareaTest9"></textarea>
+        <br>
+        <img alt="test" id="img2" src="FoesEnd.jpg" width="200">
+    </div>
+  </div>
+
+  <div class="testDialog">
+    <div class="PrintArea area3 all">
+        This is Print Area 3
+    </div>
+  </div>
+
+  <div class="SettingsBox" style="border: solid 2px #999fff; float: left; margin-left: 20px;">
+    <div style="width: 400px; padding: 20px;">
+        <div class="buttonBar" style="padding: 0 10px 10px;">
+          <div class="button b1">Print</div>
+          <div class="toggleDialog">open dialog</div>
+        </div>
+
+        <div style="font-weight: bold; border-top: solid 1px #999fff; padding-top: 10px;">Settings</div>
+        <table>
+          <tbody>
+          <tr>
+            <td><input checked="" id="popup" name="mode" type="radio" value="popup"> Popup</td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;"><input id="closePop" name="popup" type="checkbox" value="popup"> Close popup</td>
+          </tr>
+          <tr>
+            <td><input id="iFrame" name="mode" type="radio" value="iframe"> IFrame</td>
+          </tr>
+          <tr>
+            <td>Extra css: <input name="extraCss" size="50" type="text" /></td>
+          </tr>
+          <tr>
+            <td><div class="settingName">Print area:</div>
+              <div class="settingVals">
+                <input checked class="selPA" type="checkbox" value="area1" /> Area 1<br>
+                <input checked class="selPA" type="checkbox" value="area2" /> Area 2<br>
+                <input checked class="selPA" type="checkbox" value="area3" /> Area 3<br>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="settingName">Retain Attributes:</div>
+              <div class="settingVals">
+                <input checked class="chkAttr" id="retainCss"   name="retainCss" type="checkbox" value="class" /> Class
+                <br>
+                <input checked class="chkAttr" id="retainId"    name="retainId"  type="checkbox" value="id" /> ID
+                <br>
+                <input checked class="chkAttr" id="retainId" name="retainStyle"  type="checkbox" value="style" /> Style
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div style="padding: 3px; border: solid 1px #ddd;">Add to head :
+                    <input checked class="chkAttr" id="addElements" name="addElements" type="checkbox" />
+                    <pre>&lt;meta charset="utf-8" /&gt;<br>&lt;http-equiv="X-UA-Compatible" content="IE=edge"/&gt;</pre>
+                </div>
+            </td>
+          </tr>
+        </tbody></table>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+
+        var dialog = $("div.testDialog").dialog({position : { my : "left top", at : "left bottom+50", of : ".SettingsBox" }, width: "600", title: "Print Dialog Box Contents"});
+
+        $(".toggleDialog").click(function(){
+            dialog.dialog("open");
+        });
+
+        $("div.b1").click(function(){
+
+            var mode = $("input[name='mode']:checked").val();
+            var close = mode == "popup" && $("input#closePop").is(":checked");
+            var extraCss = $("input[name='extraCss']").val();
+
+            var print = "";
+            $("input.selPA:checked").each(function(){
+                print += (print.length > 0 ? "," : "") + "div.PrintArea." + $(this).val();
+            });
+
+            var keepAttr = [];
+            $(".chkAttr").each(function(){
+                if ($(this).is(":checked") == false )
+                    return;
+
+                keepAttr.push( $(this).val() );
+            });
+
+            var headElements = $("input#addElements").is(":checked") ? '<meta charset="utf-8" />,<meta http-equiv="X-UA-Compatible" content="IE=edge"/>' : '';
+
+            var options = { mode : mode, popClose : close, extraCss : extraCss, retainAttr : keepAttr, extraHead : headElements };
+
+            $( print ).printArea( options );
+        });
+
+        $("input[name='mode']").click(function(){
+            if ( $(this).val() == "iframe" ) $("#closePop").attr( "checked", false );
+        });
+    });
+
+  </script>
+</body>
+</html>

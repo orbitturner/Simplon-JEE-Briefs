@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../reset.css" rel="stylesheet"/>
+        <link href="./style.css" rel="stylesheet"/>
+
+        <title>MixItUp Demo - Toggle Filtering AND Logic</title>
+    </head>
+    <body>
+        <div class="controls">
+            <button class="control" data-filter="all" type="button">All</button>
+            <button class="control" data-toggle=".green" type="button">Green</button>
+            <button class="control" data-toggle=".blue" type="button">Blue</button>
+            <button class="control" data-toggle=".pink" type="button">Pink</button>
+        </div>
+
+        <div class="container">
+            <div class="mix green blue"></div>
+            <div class="mix green"></div>
+            <div class="mix blue"></div>
+            <div class="mix pink"></div>
+            <div class="mix green pink"></div>
+            <div class="mix blue"></div>
+            <div class="mix pink"></div>
+            <div class="mix blue pink"></div>
+
+            <div class="gap"></div>
+            <div class="gap"></div>
+            <div class="gap"></div>
+        </div>
+
+        <script src="../mixitup.min.js"></script>
+
+        <script>
+            var containerEl = document.querySelector('.container');
+
+            var mixer = mixitup(containerEl, {
+                controls: {
+                    toggleLogic: 'and'
+                }
+            });
+        </script>
+    </body>
+</html>

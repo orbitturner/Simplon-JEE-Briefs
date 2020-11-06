@@ -1,14 +1,8 @@
 package com.senforage.entities;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /* === 🌌 WELCOME TO ORBIT JEE REMIX 🌌  ===
 *                     
@@ -26,22 +20,27 @@ import javax.persistence.OneToMany;
 */
 
 @Entity
-public class Roles {
+public class Roles implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
-    private Long       id;
+    private Long              id;
 
     @Column( nullable = false, length = 50 )
-    private String     libelle;
+    private String            libelle;
 
-    @Column( nullable = true, length = 255 )
-    private String     description;
+    @Column( length = 255 )
+    private String            description;
 
-    @OneToMany( mappedBy = "role", targetEntity = User.class, fetch = FetchType.EAGER )
-    private List<User> users;
+    @OneToMany( mappedBy = "role", targetEntity = User.class, fetch = FetchType.LAZY )
+    private List<User>        users;
 
     @Column( nullable = false, length = 2 )
-    private int        state;
+    private int               state;
 
     // ====== CONSTRUCTOR ======
     /**

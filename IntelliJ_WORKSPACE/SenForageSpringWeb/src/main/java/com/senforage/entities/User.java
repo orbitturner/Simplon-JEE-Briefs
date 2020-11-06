@@ -1,16 +1,8 @@
 package com.senforage.entities;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /* === 🌌 WELCOME TO ORBIT JEE REMIX 🌌  ===
 *                     
@@ -28,42 +20,47 @@ import javax.persistence.OneToMany;
 */
 
 @Entity
-public class User {
+public class User implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
-    private Long          id;
+    private Long              id;
 
     @Column( nullable = false, length = 50 )
-    private String        nom;
+    private String            nom;
 
     @Column( nullable = false, length = 75 )
-    private String        prenom;
+    private String            prenom;
 
     @Column( nullable = false, length = 50 )
-    private String        username;
+    private String            username;
 
     @Column( nullable = false, length = 255 )
-    private String        email;
+    private String            email;
 
     @Column( nullable = false, length = 512 )
-    private String        password;
+    private String            password;
 
     @ManyToOne( optional = false )
     @JoinColumn( name = "ID_ROLE", referencedColumnName = "id", nullable = false )
-    private Roles         role;
+    private Roles             role;
 
-    @OneToMany( mappedBy = "created_by", targetEntity = Client.class, fetch = FetchType.EAGER )
-    private List<Client>  clients;
+    @OneToMany( mappedBy = "created_by", targetEntity = Client.class, fetch = FetchType.LAZY )
+    private List<Client>      clients;
 
-    @OneToMany( mappedBy = "created_by", targetEntity = Village.class, fetch = FetchType.EAGER )
-    private List<Village> villages;
+    @OneToMany( mappedBy = "created_by", targetEntity = Village.class, fetch = FetchType.LAZY )
+    private List<Village>     villages;
 
     @Column( nullable = false, length = 255 )
-    private String        created_at;
+    private String            created_at;
 
     @Column( nullable = false, length = 2 )
-    private int           state;
+    private int               state;
 
     // ===== Constructor =====
     /**
