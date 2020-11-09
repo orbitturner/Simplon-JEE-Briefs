@@ -1,0 +1,85 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:fragment="content">
+		<!-- start -->
+		<li>
+          <a th:href="@{/home}" href="/home">
+            <i data-feather="pie-chart"></i>
+			<span>Dashboard</span>
+          </a>
+        </li>
+
+		<li class="header nav-small-cap">App Management</li>
+
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="home"></i>
+            <span>Villages</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a th:href="@{/villages}" href="/villages"><i class="ti-more"></i>List of Villages</a></li>
+            <li><a th:href="@{/villages/new}" href="/villages/new"><i class="ti-more"></i>Create a Village</a></li>
+            <li><a th:href="@{/villages/showblocked}" href="/villages/showblocked"><i class="ti-more"></i>Blocked Villages</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="users"></i>
+            <span>Customers</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          	<li><a th:href="@{/clients}" href="/clients"><i class="ti-more"></i>List of Customers</a></li>
+            <li><a th:href="@{/clients/new}" href="/clients/new"><i class="ti-more"></i>Create a Customer</a></li>
+            <li><a th:href="@{/clients/showblocked}" href="/clients/showblocked"><i class="ti-more"></i>Show Blocked Customers</a></li>
+          </ul>
+        </li>
+
+        <li class="header nav-small-cap">System Management Interface</li>
+
+		<li class="treeview">
+		      <a href="#">
+		        <i data-feather="user-check"></i>
+		        <span>Users</span>
+		        <span class="pull-right-container">
+		          <i class="fa fa-angle-right pull-right"></i>
+		        </span>
+		      </a>
+		      <ul class="treeview-menu">
+		        <%-- <li><a th:href="@{/profile}" href="/profile"><i class="ti-more"></i>Profile</a></li>--%>
+		        <li><a th:href="@{/users}" href="/users"><i class="ti-more"></i>List of Users</a></li>
+		        <li><a th:href="@{/profile}" href="/users/new"><i class="ti-more"></i>Create a User</a></li>
+		        <li><a th:href="@{/users/showblocked}" href="users/showblocked"><i class="ti-more"></i>Show Blocked Users</a></li>
+		      </ul>
+		</li>
+
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="grid"></i>
+            <span>Roles</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          	<li><a th:href="@{/roles}" href="/roles"><i class="ti-more"></i>List of Users</a></li>
+            <li><a th:href="@{/roles/new}" href="/roles/new"><i class="ti-more"></i>Create a Role</a></li>
+            <li><a th:href="@{/roles/showblocked}" href="/roles/showblocked"><i class="ti-more"></i>Show Blocked Roles</a></li>
+          </ul>
+        </li>
+</th:block>
+</html>
+		
+		  
+<!-- 		<li>
+          <a href="logout">
+            <i data-feather="lock"></i>
+			<span>Log Out</span>
+          </a>
+        </li>  -->
+		<!-- end -->

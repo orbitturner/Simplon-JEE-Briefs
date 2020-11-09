@@ -1,8 +1,15 @@
-package com.senforage.dao;
+package com.senforage.orbit.dao;
+
+import java.util.List;
+
+import com.senforage.orbit.entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /* === 🌌 WELCOME TO ORBIT JEE REMIX 🌌  ===
 *                     
-*	  By :
+*	  @author OrbitTurner :
 *
 *     ██████╗ ██████╗ ██████╗ ██╗████████╗    ████████╗██╗   ██╗██████╗ ███╗   ██╗███████╗██████╗ 
 *    ██╔═══██╗██╔══██╗██╔══██╗██║╚══██╔══╝    ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║██╔════╝██╔══██╗
@@ -14,28 +21,15 @@ package com.senforage.dao;
 *  AUTHOR : MOHAMED GUEYE [Orbit Turner] - Linkedin: www.linkedin.com/in/orbitturner - Email: orbitturner@orbitturner.com - Country: Senegal
 *                              GITHUB : Orbit Turner    -   Website: http://orbitturner.com/ 
 */
-/**
- * @author shado
- *
- */
-public class DAOException extends RuntimeException {
+
+@Repository
+public interface IUserDao extends JpaRepository<User, Long> {
     /**
-     * 
+     *
+     * param email
+     * param password
+     * @return User
      */
-    private static final long serialVersionUID = 1L;
+    User findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 
-    /*
-     * Constructeurs
-     */
-    public DAOException( String message ) {
-        super( message );
-    }
-
-    public DAOException( String message, Throwable cause ) {
-        super( message, cause );
-    }
-
-    public DAOException( Throwable cause ) {
-        super( cause );
-    }
 }

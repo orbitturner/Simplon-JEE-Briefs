@@ -1,12 +1,15 @@
-package com.senforage.dao;
+package com.senforage.orbit.dao;
 
 import java.util.List;
 
-import com.senforage.entities.User;
+
+import com.senforage.orbit.entities.Roles;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /* === 🌌 WELCOME TO ORBIT JEE REMIX 🌌  ===
 *                     
-*	  @author OrbitTurner :
+*	  By :
 *
 *     ██████╗ ██████╗ ██████╗ ██╗████████╗    ████████╗██╗   ██╗██████╗ ███╗   ██╗███████╗██████╗ 
 *    ██╔═══██╗██╔══██╗██╔══██╗██║╚══██╔══╝    ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║██╔════╝██╔══██╗
@@ -19,16 +22,11 @@ import com.senforage.entities.User;
 *                              GITHUB : Orbit Turner    -   Website: http://orbitturner.com/ 
 */
 
-public interface IUserDao {
-    // Finding a User by His Email and Password From DataSource
-    public User getUserbyParams( String email, String password ) throws DAOException;
+@Repository
+public interface IRolesDao extends JpaRepository<Roles, Long> {
+    // Finding a Role by His Id
+    //    public Roles find( Long id ) throws DAOException;
 
-    // Finding a User by His Email
-    public User getUserbyParams( String email ) throws DAOException;
-
-    // Creating a New User
-    public void create( User user ) throws DAOException;
-
-    // Get All Users
-    public List<?> getAllActiveUser() throws DAOException;
+    // Get All Active Roles
+    //    public List<?> getAllRoles() throws DAOException;
 }

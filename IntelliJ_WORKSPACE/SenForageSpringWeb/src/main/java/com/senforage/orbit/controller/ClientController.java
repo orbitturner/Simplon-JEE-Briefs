@@ -1,4 +1,4 @@
-package com.senforage.controller;
+package com.senforage.orbit.controller;
 /* === 🌌 WELCOME TO ORBIT SPACESHIP 🌌  ===
  *
  *     Project : SenForageSpringWeb
@@ -15,6 +15,11 @@ package com.senforage.controller;
  *                              GITHUB : /orbitturner    -   Website: http://orbitturner.com/
  */
 
-public class AuthController {
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/client")
+public class ClientController {
 
 }

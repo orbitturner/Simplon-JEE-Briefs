@@ -1,4 +1,8 @@
-package com.senforage.controller;
+package com.senforage.orbit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /* === 🌌 WELCOME TO ORBIT SPACESHIP 🌌  ===
  *
  *     Project : SenForageSpringWeb
@@ -14,7 +18,8 @@ package com.senforage.controller;
  *  AUTHOR : MOHAMED GUEYE [Orbit Turner] - Linkedin: www.linkedin.com/in/orbitturner - Email: orbitturner@orbitturner.com - Country: Senegal
  *                              GITHUB : /orbitturner    -   Website: http://orbitturner.com/
  */
-
-public class UserController {
+@Controller
+@RequestMapping({"/login","/logout"})
+public class AuthController {
 
 }

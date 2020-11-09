@@ -1,8 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-<%@page import="services.UrlHelper"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
 <!-- /* === 🌌 WELCOME TO ORBIT WP REMIX 🌌  === -->
 <!-- *                      -->
 <!-- *	  By : -->
@@ -17,29 +15,26 @@
 <!-- *  AUTHOR : MOHAMED GUEYE [Orbit Turner] - Linkedin: www.linkedin.com/in/orbitturner - Email: orbitturner@orbitturner.com - Country: Senegal -->
 <!-- *                              GITHUB : Orbit Turner    -   Website: http://orbitturner.com/  -->
 <!-- */ -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href=<c:out value="${UrlHelper.getImgRepos()}favicon.ico"/> />
+    <meta name="author" content="Orbit Turner">
+    <link rel="icon" th:href="@{images/favicon.ico}" />
 
-    <title><c:out value="${pageTitle}" default="SEN FORAGE - Dashboard"/> •&nbsp;</title>
+
+    <title th:text="${pageTitle} + ' • &nbsp;'">SEN FORAGE - E-PLATFORM</title>
     
 	<!-- Vendors Style-->
-	<link rel="stylesheet" href="${UrlHelper.getCssRepos()}vendors_css.css">
+	<link rel="stylesheet" th:href="@{css/vendors_css.css}">
 	  
 	<!-- Style-->  
-	<link type="text/css" rel="stylesheet" href="${UrlHelper.getCssRepos()}style.css">
-	<link type="text/css" rel="stylesheet" href="${UrlHelper.getCssRepos()}skin_color.css">
+	<link type="text/css" rel="stylesheet" th:href="@{css/style.css}">
+	<link type="text/css" rel="stylesheet" th:href="@{css/skin_color.css}">
      
   </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed" onload="titleMarquee()">
-<%-- 	<c:out value="${baseUrl }public/css/bootstrap.css"/> --%>
 <div class="wrapper">
 
   <header class="main-header">
@@ -74,7 +69,7 @@
       <div class="navbar-custom-menu r-side">
         <ul class="nav navbar-nav">
         	<li class="btn-group nav-item welcome-message">
-        		<a class="nav-link">Welcome : ${sessionScope.actualUser.username} 👋🏿</a>
+        		<a class="nav-link">Welcome :  👋🏿</a>
         	</li>
 		  <!-- Search-Bar -->
 	      <li class="search-bar">		  
@@ -151,19 +146,19 @@
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img src="${UrlHelper.getImgRepos()}avatar/1.gif" alt="">
+				<img th:src="@{images/avatar/1.gif}" src="images/avatar/1.gif" alt="">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
 			  	
-			  	 <a class="dropdown-item text-white" href="#"><i class="ti-user mr-2"></i> <span>${sessionScope.actualUser.prenom} ${sessionScope.actualUser.nom} </span></a>
-			 	 <span class="dropdown-item text-white">Connected as : ${sessionScope.actualUser.role.libelle}</span>
+			  	 <a class="dropdown-item text-white" href="#"><i class="ti-user mr-2"></i> <span>Mohamed GUEYE </span></a>
+			 	 <span class="dropdown-item text-white">Connected as : ${role}</span>
 			 	 <div class="dropdown-divider"></div>
-				 <a class="dropdown-item" href="<c:url value="/profile" />"><i class="ti-user text-muted mr-2"></i> Profile</a>
-				 <a class="dropdown-item" href="mailto:orbitturner@orbitturner.com"><i class="ti-headphone-alt text-muted mr-2"></i> Contact The Admin</a>
-				 <a class="dropdown-item" href="<c:url value="/settings" />"><i class="ti-settings text-muted mr-2"></i> Settings</a>
+				 <a class="dropdown-item" th:href="@{/profile}"><i class="ti-user text-muted mr-2"></i> Profile</a>
+				 <a class="dropdown-item" th:href="'mailto:orbitturner@orbitturner.com'"><i class="ti-headphone-alt text-muted mr-2"></i> Contact The Admin</a>
+				 <a class="dropdown-item" th:href="@{/settings}"><i class="ti-settings text-muted mr-2"></i> Settings</a>
 				 <div class="dropdown-divider"></div>
-				 <a class="dropdown-item logout" href="<c:url value="/logout" />"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+				 <a class="dropdown-item logout" th:href="@{/logout}" ><i class="ti-lock text-muted mr-2"></i> Logout</a>
 			  </li>
 			</ul>
           </li>	
@@ -185,10 +180,10 @@
 		
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="<c:url value="/home" />">
+				 <a th:href="@{/home}" >
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
-						  <img src="${UrlHelper.getImgRepos()}logo-dark.png" alt="">
+						  <img th:src="@{images/logo-dark.png}" src="images/logo-dark.png" alt="">
 						  <h3><b>Sen</b> Forage</h3>
 					 </div>
 				</a>
@@ -196,31 +191,30 @@
         </div>
       
       <!-- ◾◾◾◾ sidebar menu ◾◾◾◾ -->
-      <ul class="sidebar-menu" data-widget="tree">  
-		<%-- ======= SIDEBAR DEPENDING ON USER ROLE ======= --%>
-		<c:import url="/WEB-INF/view/template/${sessionScope.actualUser.role.libelle}.menu.jsp"></c:import>
-		<%-- ======= FIN SIDEBAR DEPENDING ON USER ROLE ======= --%>
+      <ul class="sidebar-menu" data-widget="tree" th:insert="'template/'+${role}+'.menu'::content">
+		<!-- ======= SIDEBAR DEPENDING ON USER ROLE ======= -->
+<!--		<c:import url="/WEB-INF/view/template/${sessionScope.actualUser.role.libelle}.menu.jsp"></c:import>-->
+		<!-- ======= FIN SIDEBAR DEPENDING ON USER ROLE ======= -->
       </ul>
       <!-- ◾◾◾◾ end of sidebar menu ◾◾◾◾ -->
     </section>
 	
 	<div class="sidebar-footer">
 		<!-- item-->
-		<a href="<c:url value="/profile" />" class="link" data-toggle="tooltip" title="" data-original-title="Profile" aria-describedby="tooltip92529"><i class="ti-user"></i></a>
+		<a th:href="@{/profile}" class="link" data-toggle="tooltip" title="" data-original-title="Profile" aria-describedby="tooltip92529"><i class="ti-user"></i></a>
 		<!-- item-->
-		<a href="<c:url value="/calendar" />" class="link" data-toggle="tooltip" title="" data-original-title="Calendar"><i class="ti-calendar"></i></a>
+		<a th:href="@{/calendar}" class="link" data-toggle="tooltip" title="" data-original-title="Calendar"><i class="ti-calendar"></i></a>
 		<!-- item-->
-		<a href="<c:url value="/logout" />" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i></a>
+		<a th:href="@{/logout}" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i></a>
 	</div>
   </aside>
 
   <!-- ◾◾◾◾ Content Wrapper. Contains page content ◾◾◾◾ -->
   <div class="content-wrapper">
-	  <div class="container-full">
-		<%-- ======= CONTENU DE LA PAGE ======= --%>
-		<%-- <c:out value="${view }"></c:out> --%>
-		<c:import url="/WEB-INF/view/${view}.jsp"></c:import>
-		<%-- ======= FIN CONTENU DE LA PAGE ======= --%>
+	  <div class="container-full" th:insert="${view}::content">
+		<!-- ======= CONTENU DE LA PAGE ======= -->
+
+		<!-- ======= FIN CONTENU DE LA PAGE ======= -->
       </div>
    </div>
   <!-- ◾◾◾◾ /.content-wrapper ◾◾◾◾ -->
@@ -241,11 +235,11 @@
 			<a class="nav-link" href="javascript:void(0)">Help</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="https://orbitturner.com" target="_blank">Report a Bug</a>
+			<a class="nav-link" th:href="'https://orbitturner.com'" target="_blank">Report a Bug</a>
 		  </li>
 		</ul>
     </div>
-	  &copy; 2020 <a href="<c:url value="https://orbitturner.com" />">ORBIT TURNER | FUTURIZE</a>. All Rights Reserved.
+	  &copy; 2020 <a th:href="'https://orbitturner.com'">ORBIT TURNER | FUTURIZE</a>. All Rights Reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -266,12 +260,12 @@
 			<a href="javascript:void(0)" class="text-right text-grey"><i class="ti-plus"></i></a>
 		  </div>
 		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
-			<input type="text" name="s" placeholder="Search" class="w-p100">
+			<input type="text" name="s" placeholder="Search" class="w-p100"/>
 		  </div>
           <div class="media-list media-list-hover mt-20">
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-success" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/1.jpg" alt="...">
+				<img th:src="@{images/avatar/1.jpg}" src="images/avatar/1.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -284,7 +278,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-danger" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/2.jpg" alt="...">
+				<img th:src="@{images/avatar/2.jpg}" src="images/avatar/2.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -297,7 +291,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-warning" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/3.jpg" alt="...">
+				<img th:src="@{images/avatar/3.jpg}" src="images/avatar/3.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -310,7 +304,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-primary" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/4.jpg" alt="...">
+				<img th:src="@{images/avatar/4.jpg}" src="images/avatar/4.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -323,7 +317,7 @@
 			
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-success" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/1.jpg" alt="...">
+				<img th:src="@{images/avatar/5.jpg}" src="images/avatar/5.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -336,7 +330,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-danger" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/2.jpg" alt="...">
+				<img th:src="@{images/avatar/2.jpg}" src="images/avatar/2.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -349,7 +343,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-warning" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/3.jpg" alt="...">
+				<img th:src="@{images/avatar/3.jpg}" src="images/avatar/3.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -362,7 +356,7 @@
 
 			<div class="media py-10 px-0">
 			  <a class="avatar avatar-lg status-primary" href="#">
-				<img src="${UrlHelper.getImgRepos()}avatar/4.jpg" alt="...">
+				<img th:src="images/avatar/4.jpg" src="images/avatar/4.jpg" alt="...">
 			  </a>
 			  <div class="media-body">
 				<p class="font-size-16">
@@ -515,56 +509,56 @@
 <!-- ./wrapper -->
   	
 	<!-- GLOBAL APP JS -->
-	<script src="${UrlHelper.getJsRepos()}vendors.min.js"></script>
-    <script src="${UrlHelper.getResourcesRepos()}assets/icons/feather-icons/feather.min.js"></script>	
+	<script th:src="@{js/vendor.min.js}" src="js/vendors.min.js"></script>
+    <script th:src="@{assets/icons/feather-icons/feather.min.js}" src="assets/icons/feather-icons/feather.min.js"></script>
     
-	 <c:if test="${view == 'home'}">	 
+	 <th:block th:if="${view == 'home'}">
 		<!-- Hompage JS -->
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/easypiechart/dist/jquery.easypiechart.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/apexcharts-bundle/irregular-data-series.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-		<script src="${UrlHelper.getJsRepos()}pages/dashboard.js"></script>
-	 </c:if>
+		<script th:src="@{assets/vendor_components/easypiechart/dist/jquery.easypiechart.js}" src="assets/vendor_components/easypiechart/dist/jquery.easypiechart.js"></script>
+		<script th:src="@{assets/vendor_components/apexcharts-bundle/irregular-data-series.js}" src="assets/vendor_components/apexcharts-bundle/irregular-data-series.js"></script>
+		<script th:src="@{assets/vendor_components/apexcharts-bundle/dist/apexcharts.js}" src="assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+		<script th:src="@{js/pages/dashboard.js}" src="js/pages/dashboard.js"></script>
+	 </th:block>
 	 
-	<c:if test="${fn:contains(view, 'list') or fn:contains(view, 'show')}">	
+	<th:block th:if="${#strings.contains(view, 'list') or #strings.contains(view, 'show')}">
 	 	<!-- Data Tables JS -->
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/datatable/datatables.min.js"></script>
-		<script src="${UrlHelper.getJsRepos()}pages/data-table.js"></script>
-	</c:if>
-	<c:if test="${fn:contains(view, 'create')}">
+		<script th:src="@{assets/vendor_components/datatable/datatables.min.js}" src="assets/vendor_components/datatable/datatables.min.js"></script>
+		<script th:src="@{js/pages/data-tables.js}" src="js/pages/data-table.js"></script>
+	</th:block>
+	<th:block th:if="${#strings.contains(view, 'create')}">
 		<!-- FORMS JS -->
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/select2/dist/js/select2.full.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/input-mask/jquery.inputmask.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/moment/min/moment.min.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"></script>
-		<script src="${UrlHelper.getResourcesRepos()}assets/vendor_plugins/iCheck/icheck.min.js"></script>
-		<script src="${UrlHelper.getJsRepos()}pages/advanced-form-element.js"></script>
-		<script src="${UrlHelper.getJsRepos()}pages/validation.js"></script>
-    	<script src="${UrlHelper.getJsRepos()}pages/form-validation.js"></script>
-	</c:if>	
+		<script th:src="@{assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js}" src="assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script th:src="@{assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js}" src="assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+		<script th:src="@{assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js}" src="assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+		<script th:src="@{assets/vendor_components/select2/dist/js/select2.full.js}" src="assets/vendor_components/select2/dist/js/select2.full.js"></script>
+		<script th:src="@{assets/vendor_plugins/input-mask/jquery.inputmask.js}" src="assets/vendor_plugins/input-mask/jquery.inputmask.js"></script>
+		<script th:src="@{assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js}" src="assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+		<script th:src="@{assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js}" src="assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"></script>
+		<script th:src="@{assets/vendor_components/moment/min/moment.min.js}" src="assets/vendor_components/moment/min/moment.min.js"></script>
+		<script th:src="@{assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js}" src="assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+		<script th:src="@{assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}" src="assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+		<script th:src="@{assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js}" src="assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+		<script th:src="@{assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js}" src="assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"></script>
+		<script th:src="@{assets/vendor_plugins/iCheck/icheck.min.js}" src="assets/vendor_plugins/iCheck/icheck.min.js"></script>
+		<script th:src="js/pages/advanced-form-element.js" src="js/pages/advanced-form-element.js"></script>
+		<script th:src="js/pages/validation.js" src="js/pages/validation.js"></script>
+    	<script th:src="js/pages/form-validation.js" src="js/pages/form-validation.js"></script>
+	</th:block>
 	<!-- Orbit Admin App -->
-	<script src="${UrlHelper.getJsRepos()}template.js"></script>
-    <script src="${UrlHelper.getJsRepos()}pages/toastr.js"></script>
-    <script src="${UrlHelper.getJsRepos()}pages/notification.js"></script>
+	<script th:src="js/template.js" src="js/template.js"></script>
+    <script th:src="js/pages/toastr.js" src="js/pages/toastr.js"></script>
+    <script th:src="js/pages/notification.js" src="js/pages/notification.js"></script>
 	
-	<c:if test="${userSuccess == true}">
+	<th:block th:if="${userSuccess == true}">
 			<script>
 				$(document).ready(function() {
 					$("#alertUserCreated").click();
 				});
 			</script>
-	</c:if>
+	</th:block>
 	<!-- Title Marquee -->
 	<script type="text/javascript">
-		var titleText = document.title;
+		let titleText = document.title;
 
 		function titleMarquee() {
 

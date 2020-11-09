@@ -1,13 +1,15 @@
-package com.senforage.dao;
+package com.senforage.orbit.entities;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
-
-
-import com.senforage.entities.Roles;
 
 /* === 🌌 WELCOME TO ORBIT JEE REMIX 🌌  ===
 *                     
-*	  By :
+*     By :
 *
 *     ██████╗ ██████╗ ██████╗ ██╗████████╗    ████████╗██╗   ██╗██████╗ ███╗   ██╗███████╗██████╗ 
 *    ██╔═══██╗██╔══██╗██╔══██╗██║╚══██╔══╝    ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║██╔════╝██╔══██╗
@@ -20,10 +22,30 @@ import com.senforage.entities.Roles;
 *                              GITHUB : Orbit Turner    -   Website: http://orbitturner.com/ 
 */
 
-public interface IRolesDao {
-    // Finding a Role by His Id
-    public Roles find( Long id ) throws DAOException;
+// Lombok Injection
+@Data
+@NoArgsConstructor
+@Entity
+public class Roles implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-    // Get All Active Roles
-    public List<?> getAllRoles() throws DAOException;
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    private Long              id;
+
+    @Column( nullable = false, length = 50 )
+    private String            libelle;
+
+    @Column( length = 255 )
+    private String            description;
+
+    @OneToMany( mappedBy = "role", targetEntity = User.class, fetch = FetchType.LAZY )
+    private List<User>        users;
+
+    @Column( nullable = false, length = 2 )
+    private int               state;
+
 }
