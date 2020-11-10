@@ -51,11 +51,12 @@
 		        </span>
 		      </a>
 		      <ul class="treeview-menu">
-		        <%-- <li><a th:href="@{/profile}" href="/profile"><i class="ti-more"></i>Profile</a></li>--%>
-		        <li><a th:href="@{/users}" href="/users"><i class="ti-more"></i>List of Users</a></li>
-		        <li><a th:href="@{/profile}" href="/users/new"><i class="ti-more"></i>Create a User</a></li>
-		        <li><a th:href="@{/users/showblocked}" href="users/showblocked"><i class="ti-more"></i>Show Blocked Users</a></li>
-		      </ul>
+                  <!--		        <%&#45;&#45; <li><a th:href="@{/profile}" href="/profile"><i class="ti-more"></i>Profile</a></li>&#45;&#45;%>-->
+                  <li><a href="/users" th:href="@{/users}"><i class="ti-more"></i>List of Users</a></li>
+                  <li><a href="/users/new" th:href="@{/users/new}"><i class="ti-more"></i>Create a User</a></li>
+                  <li><a href="users/showblocked" th:href="@{/users/showblocked}"><i class="ti-more"></i>Show Blocked
+                      Users</a></li>
+              </ul>
 		</li>
 
         <li class="treeview">
@@ -72,14 +73,6 @@
             <li><a th:href="@{/roles/showblocked}" href="/roles/showblocked"><i class="ti-more"></i>Show Blocked Roles</a></li>
           </ul>
         </li>
+    <!-- END -->
 </th:block>
 </html>
-		
-		  
-<!-- 		<li>
-          <a href="logout">
-            <i data-feather="lock"></i>
-			<span>Log Out</span>
-          </a>
-        </li>  -->
-		<!-- end -->

@@ -1,0 +1,154 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Main content -->
+<section class="content" th:fragment="content">
+	<div class="row">
+		<div class="box">
+			<!-- box-header -->
+			<div class="box-header with-border text-center text-uppercase">
+				<h4 class="box-title">Create a New User</h4>
+			</div>
+			<!-- /.box-header -->
+
+			<!-- box-body -->
+			<form class="form" method="post" th:action="@{/users/new}" th:object="${user}">
+				<div class="box-body">
+					<h4 class="box-title text-info"><i class="ti-user mr-15"></i> Personal Info</h4>
+					<span class="text-danger" th:if="${#fields.hasErrors('global')}">
+					<br/>▶STATUS:
+					<ul>
+					  <li th:each="error : ${#fields.errors('global')}" th:text="${error}">error</li>
+					</ul>
+						<!--<th:block th:if="${form != null}" th:text="'<br/>▶STATUS: '+${form?.resultat}+'"> </th:block>-->
+				</span>
+					<hr class="my-15">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>
+									<th:block th:errors="*{prenom}" th:if="${#fields.hasErrors('prenom')}">Verify First
+										Name
+									</th:block>
+									First Name</label>
+								<input class="form-control" data-validation-required-message="This field is required"
+									   name="prenom" placeholder="First Name" required th:field="*{prenom}" type="text">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>
+									<th:block th:errors="*{nom}" th:if="${#fields.hasErrors('nom')}">Verify Name
+									</th:block>
+									Last Name</label>
+								<input class="form-control" data-validation-required-message="This field is required"
+									   name="nom" placeholder="Last Name" required th:field="*{nom}" type="text">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>
+									<th:block th:errors="*{email}" th:if="${#fields.hasErrors('email')}">Verify the
+										Email
+									</th:block>
+									E-mail</label>
+								<input class="form-control" data-validation-required-message="This field is required"
+									   name="email" placeholder="E-mail" required th:field="*{email}" type="text">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>
+									<th:block th:errors="*{username}" th:if="${#fields.hasErrors('username')}">Verify
+										the Username
+									</th:block>
+									Username</label>
+								<div class="input-group">
+									<span class="input-group-addon">@</span>
+									<input class="form-control" name="username" placeholder="Username" required
+										   th:field="*{username}" type="text">
+								</div>
+							</div>
+						</div>
+					</div>
+					<h4 class="box-title text-info"><i class="ti-save mr-15"></i> Requirements</h4>
+					<hr class="my-15">
+
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<h5>
+									<th:block th:errors="*{password}" th:if="${#fields.hasErrors('password')}">Verify
+										Password
+									</th:block>
+									Password Input Field <span class="text-danger">*</span>
+								</h5>
+								<div class="controls">
+									<input class="form-control"
+										   data-validation-required-message="This field is required" name="password"
+										   required th:field="*{password}" type="password">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<h5>Repeat Password Input Field <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input class="form-control" data-validation-match-match="password"
+										   name="confirmpass" required type="password">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>
+									<th:block th:errors="*{role}" th:if="${#fields.hasErrors('role')}">Verify Role
+									</th:block>
+									Role</label>
+								<select class="form-control select2" name="role" required style="width: 100%;"
+										th:field="*{role}">
+									<option class="text-center" th:class="text-center" th:disabled="disabled"
+											th:selected="selected" value="">⮟ Select a Role For The New ⮟
+									</option>
+									<option th:each="r:${rolesList}" th:text="${r.libelle}"
+											th:value="${ r.id }"></option>
+								</select>
+							</div>
+							<!-- /.form-group -->
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>
+									<th:block th:errors="*{state}" th:if="${#fields.hasErrors('state')}">Verify State
+									</th:block>
+									State of The Account</label>
+								<select class="selectpicker mb-20 mr-10" data-style="btn-warning " name="state"
+										th:field="*{state}">
+									<option data-tokens="1" value="1">Activated</option>
+									<option data-tokens="0" value="0">Disabled</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer text-center">
+					<button class="btn btn-rounded btn-warning btn-outline mr-1" type="reset">
+						<i class="ti-trash"></i> Cancel
+					</button>
+					<button class="btn btn-rounded btn-primary btn-outline" type="submit">
+						<i class="ti-save-alt"></i> Save
+					</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.box -->
+	</div>
+	<!-- /.row -->
+
+</section>
+<!-- /.content -->
+</html>

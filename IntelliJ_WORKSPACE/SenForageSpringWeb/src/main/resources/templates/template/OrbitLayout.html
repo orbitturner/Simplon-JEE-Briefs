@@ -7,54 +7,57 @@
 <!-- * -->
 <!-- *     ██████╗ ██████╗ ██████╗ ██╗████████╗    ████████╗██╗   ██╗██████╗ ███╗   ██╗███████╗██████╗  -->
 <!-- *    ██╔═══██╗██╔══██╗██╔══██╗██║╚══██╔══╝    ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║██╔════╝██╔══██╗ -->
-<!-- *    ██║   ██║██████╔╝██████╔╝██║   ██║          ██║   ██║   ██║██████╔╝██╔██╗ ██║█████╗  ██████╔╝ -->
-<!-- *    ██║   ██║██╔══██╗██╔══██╗██║   ██║          ██║   ██║   ██║██╔══██╗██║╚██╗██║██╔══╝  ██╔══██╗ -->
-<!-- *    ╚██████╔╝██║  ██║██████╔╝██║   ██║          ██║   ╚██████╔╝██║  ██║██║ ╚████║███████╗██║  ██║ -->
-<!-- *     ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝   ╚═╝          ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ -->
-<!-- *           -->
-<!-- *  AUTHOR : MOHAMED GUEYE [Orbit Turner] - Linkedin: www.linkedin.com/in/orbitturner - Email: orbitturner@orbitturner.com - Country: Senegal -->
-<!-- *                              GITHUB : Orbit Turner    -   Website: http://orbitturner.com/  -->
-<!-- */ -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Orbit Turner">
-    <link rel="icon" th:href="@{images/favicon.ico}" />
+	  <!-- *    ██║   ██║██████╔╝██████╔╝██║   ██║          ██║   ██║   ██║██████╔╝██╔██╗ ██║█████╗  ██████╔╝ -->
+	  <!-- *    ██║   ██║██╔══██╗██╔══██╗██║   ██║          ██║   ██║   ██║██╔══██╗██║╚██╗██║██╔══╝  ██╔══██╗ -->
+	  <!-- *    ╚██████╔╝██║  ██║██████╔╝██║   ██║          ██║   ╚██████╔╝██║  ██║██║ ╚████║███████╗██║  ██║ -->
+	  <!-- *     ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝   ╚═╝          ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ -->
+	  <!-- *           -->
+	  <!-- *  AUTHOR : MOHAMED GUEYE [Orbit Turner] - Linkedin: www.linkedin.com/in/orbitturner - Email: orbitturner@orbitturner.com - Country: Senegal -->
+	  <!-- *                              GITHUB : Orbit Turner    -   Website: http://orbitturner.com/  -->
+	  <!-- */ -->
+	  <meta charset="utf-8">
+	  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+	  <meta content="width=device-width, initial-scale=1" name="viewport">
+	  <meta content="" name="description">
+	  <meta content="Orbit Turner" name="author">
+	  <link rel="icon" th:href="@{/images/favicon.ico}"/>
 
 
-    <title th:text="${pageTitle} + ' • &nbsp;'">SEN FORAGE - E-PLATFORM</title>
-    
-	<!-- Vendors Style-->
-	<link rel="stylesheet" th:href="@{css/vendors_css.css}">
-	  
-	<!-- Style-->  
-	<link type="text/css" rel="stylesheet" th:href="@{css/style.css}">
-	<link type="text/css" rel="stylesheet" th:href="@{css/skin_color.css}">
-     
+	  <title th:text="${pageTitle}">SEN FORAGE - E-PLATFORM</title>
+
+	  <!-- Vendors Style-->
+	  <link rel="stylesheet" th:href="@{/css/vendors_css.css}">
+
+	  <!-- Style-->
+	  <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	  <link rel="stylesheet" th:href="@{/css/skin_color.css}" type="text/css">
+
   </head>
 
-<body class="hold-transition dark-skin sidebar-mini theme-primary fixed" onload="titleMarquee()">
-<div class="wrapper">
+  <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
+  <!--onload="titleMarquee()"-->
+  <div class="wrapper">
 
-  <header class="main-header">
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top pl-30">
-      <!-- Sidebar toggle button-->
-	  <div>
-		  <ul class="nav">
-			<li class="btn-group nav-item">
-				<a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="push-menu" role="button">
-					<i class="nav-link-icon mdi mdi-menu"></i>
-			    </a>
-			</li>
-			<li class="btn-group nav-item">
-				<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="Full Screen">
-					<i class="nav-link-icon mdi mdi-crop-free"></i>
-			    </a>
-			</li>			
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
+	  <header class="main-header">
+		  <!-- Header Navbar -->
+		  <nav class="navbar navbar-static-top pl-30">
+			  <!-- Sidebar toggle button-->
+			  <div>
+				  <ul class="nav">
+					  <li class="btn-group nav-item">
+						  <a class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="push-menu"
+							 href="#" role="button">
+							  <i class="nav-link-icon mdi mdi-menu"></i>
+						  </a>
+					  </li>
+					  <li class="btn-group nav-item">
+						  <a href="#" data-provide="fullscreen"
+							 class="waves-effect waves-light nav-link rounded svg-bt-icon" title="Full Screen">
+							  <i class="nav-link-icon mdi mdi-crop-free"></i>
+						  </a>
+					  </li>
+					  <li class="btn-group nav-item d-none d-xl-inline-block">
+						  <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-check-box"></i>
 			    </a>
 			</li>
@@ -137,27 +140,32 @@
 				  </li>
 				</ul>
 			  </li>
-			  <li class="footer">
-				  <a href="#">View all</a>
-			  </li>
+				<li class="footer">
+					<a href="#">View all</a>
+				</li>
 			</ul>
-		  </li>	
-		  
-	      <!-- User Account-->
-          <li class="dropdown user user-menu">	
-			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img th:src="@{images/avatar/1.gif}" src="images/avatar/1.gif" alt="">
-			</a>
-			<ul class="dropdown-menu animated flipInX">
-			  <li class="user-body">
-			  	
-			  	 <a class="dropdown-item text-white" href="#"><i class="ti-user mr-2"></i> <span>Mohamed GUEYE </span></a>
-			 	 <span class="dropdown-item text-white">Connected as : ${role}</span>
-			 	 <div class="dropdown-divider"></div>
-				 <a class="dropdown-item" th:href="@{/profile}"><i class="ti-user text-muted mr-2"></i> Profile</a>
-				 <a class="dropdown-item" th:href="'mailto:orbitturner@orbitturner.com'"><i class="ti-headphone-alt text-muted mr-2"></i> Contact The Admin</a>
-				 <a class="dropdown-item" th:href="@{/settings}"><i class="ti-settings text-muted mr-2"></i> Settings</a>
-				 <div class="dropdown-divider"></div>
+		  </li>
+
+			<!-- User Account-->
+			<li class="dropdown user user-menu">
+				<a class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" href="#"
+				   title="User">
+					<img alt="" src="images/avatar/1.gif" th:src="@{/images/avatar/1.gif}">
+				</a>
+				<ul class="dropdown-menu animated flipInX">
+					<li class="user-body">
+
+						<a class="dropdown-item text-white" href="#"><i class="ti-user mr-2"></i>
+							<span>Mohamed GUEYE </span></a>
+						<span class="dropdown-item text-white">Connected as : ${role}</span>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" th:href="@{/profile}"><i class="ti-user text-muted mr-2"></i>
+							Profile</a>
+						<a class="dropdown-item" th:href="'mailto:orbitturner@orbitturner.com'"><i
+								class="ti-headphone-alt text-muted mr-2"></i> Contact The Admin</a>
+						<a class="dropdown-item" th:href="@{/settings}"><i class="ti-settings text-muted mr-2"></i>
+							Settings</a>
+						<div class="dropdown-divider"></div>
 				 <a class="dropdown-item logout" th:href="@{/logout}" ><i class="ti-lock text-muted mr-2"></i> Logout</a>
 			  </li>
 			</ul>
@@ -180,12 +188,12 @@
 		
         <div class="user-profile">
 			<div class="ulogo">
-				 <a th:href="@{/home}" >
-				  <!-- logo for regular state and mobile devices -->
-					 <div class="d-flex align-items-center justify-content-center">					 	
-						  <img th:src="@{images/logo-dark.png}" src="images/logo-dark.png" alt="">
-						  <h3><b>Sen</b> Forage</h3>
-					 </div>
+				<a th:href="@{/home}">
+					<!-- logo for regular state and mobile devices -->
+					<div class="d-flex align-items-center justify-content-center">
+						<img alt="" src="images/logo-dark.png" th:src="@{/images/logo-dark.png}">
+						<h3><b>Sen</b> Forage</h3>
+					</div>
 				</a>
 			</div>
         </div>
@@ -263,109 +271,109 @@
 			<input type="text" name="s" placeholder="Search" class="w-p100"/>
 		  </div>
           <div class="media-list media-list-hover mt-20">
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-success" href="#">
-				<img th:src="@{images/avatar/1.jpg}" src="images/avatar/1.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
-				</p>
-				<p>Praesent tristique diam...</p>
-				  <span>Just now</span>
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-success" href="#">
+					  <img alt="..." src="images/avatar/1.jpg" th:src="@{/images/avatar/1.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+					  </p>
+					  <p>Praesent tristique diam...</p>
+					  <span>Just now</span>
+				  </div>
 			  </div>
-			</div>
 
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-danger" href="#">
-				<img th:src="@{images/avatar/2.jpg}" src="images/avatar/2.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
-				</p>
-				<p>Cras tempor diam ...</p>
-				  <span>33 min ago</span>
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-danger" href="#">
+					  <img alt="..." src="images/avatar/2.jpg" th:src="@{/images/avatar/2.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+					  </p>
+					  <p>Cras tempor diam ...</p>
+					  <span>33 min ago</span>
+				  </div>
 			  </div>
-			</div>
 
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-warning" href="#">
-				<img th:src="@{images/avatar/3.jpg}" src="images/avatar/3.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-warning" href="#">
+					  <img alt="..." src="images/avatar/3.jpg" th:src="@{/images/avatar/3.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+					  </p>
+					  <p>In posuere tortor vel...</p>
+					  <span>42 min ago</span>
+				  </div>
 			  </div>
-			</div>
 
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-primary" href="#">
-				<img th:src="@{images/avatar/4.jpg}" src="images/avatar/4.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-primary" href="#">
+					  <img alt="..." src="images/avatar/4.jpg" th:src="@{/images/avatar/4.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+					  </p>
+					  <p>In posuere tortor vel...</p>
+					  <span>42 min ago</span>
+				  </div>
 			  </div>
-			</div>			
-			
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-success" href="#">
-				<img th:src="@{images/avatar/5.jpg}" src="images/avatar/5.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
-				</p>
-				<p>Praesent tristique diam...</p>
-				  <span>Just now</span>
-			  </div>
-			</div>
 
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-danger" href="#">
-				<img th:src="@{images/avatar/2.jpg}" src="images/avatar/2.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
-				</p>
-				<p>Cras tempor diam ...</p>
-				  <span>33 min ago</span>
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-success" href="#">
+					  <img alt="..." src="images/avatar/5.jpg" th:src="@{/images/avatar/5.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+					  </p>
+					  <p>Praesent tristique diam...</p>
+					  <span>Just now</span>
+				  </div>
 			  </div>
-			</div>
 
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-warning" href="#">
-				<img th:src="@{images/avatar/3.jpg}" src="images/avatar/3.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-danger" href="#">
+					  <img alt="..." src="images/avatar/2.jpg" th:src="@{/images/avatar/2.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+					  </p>
+					  <p>Cras tempor diam ...</p>
+					  <span>33 min ago</span>
+				  </div>
 			  </div>
-			</div>
 
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-primary" href="#">
-				<img th:src="images/avatar/4.jpg" src="images/avatar/4.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="font-size-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-warning" href="#">
+					  <img alt="..." src="images/avatar/3.jpg" th:src="@{/images/avatar/3.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+					  </p>
+					  <p>In posuere tortor vel...</p>
+					  <span>42 min ago</span>
+				  </div>
 			  </div>
-			</div>
+
+			  <div class="media py-10 px-0">
+				  <a class="avatar avatar-lg status-primary" href="#">
+					  <img alt="..." src="images/avatar/4.jpg" th:src="@{/images/avatar/4.jpg}">
+				  </a>
+				  <div class="media-body">
+					  <p class="font-size-16">
+						  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+					  </p>
+					  <p>In posuere tortor vel...</p>
+					  <span>42 min ago</span>
+				  </div>
+			  </div>
 			  
 		  </div>
 
@@ -490,84 +498,102 @@
 			  <label for="basic_checkbox_10" class="mb-0 h-15"></label>
 			  <span class="text-line">Proin nec mi porta</span>
 			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
+				<div class="tools">
+					<i class="fa fa-edit"></i>
+					<i class="fa fa-trash-o"></i>
+				</div>
 			</li>
-		  </ul>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
+		</ul>
+	  </div>
+		<!-- /.tab-pane -->
+	</div>
   </aside>
-  <!-- /.control-sidebar -->
-  
-  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-  
-</div>
-<!-- ./wrapper -->
-  	
-	<!-- GLOBAL APP JS -->
-	<script th:src="@{js/vendor.min.js}" src="js/vendors.min.js"></script>
-    <script th:src="@{assets/icons/feather-icons/feather.min.js}" src="assets/icons/feather-icons/feather.min.js"></script>
-    
-	 <th:block th:if="${view == 'home'}">
-		<!-- Hompage JS -->
-		<script th:src="@{assets/vendor_components/easypiechart/dist/jquery.easypiechart.js}" src="assets/vendor_components/easypiechart/dist/jquery.easypiechart.js"></script>
-		<script th:src="@{assets/vendor_components/apexcharts-bundle/irregular-data-series.js}" src="assets/vendor_components/apexcharts-bundle/irregular-data-series.js"></script>
-		<script th:src="@{assets/vendor_components/apexcharts-bundle/dist/apexcharts.js}" src="assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-		<script th:src="@{js/pages/dashboard.js}" src="js/pages/dashboard.js"></script>
-	 </th:block>
-	 
-	<th:block th:if="${#strings.contains(view, 'list') or #strings.contains(view, 'show')}">
-	 	<!-- Data Tables JS -->
-		<script th:src="@{assets/vendor_components/datatable/datatables.min.js}" src="assets/vendor_components/datatable/datatables.min.js"></script>
-		<script th:src="@{js/pages/data-tables.js}" src="js/pages/data-table.js"></script>
-	</th:block>
-	<th:block th:if="${#strings.contains(view, 'create')}">
-		<!-- FORMS JS -->
-		<script th:src="@{assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js}" src="assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-		<script th:src="@{assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js}" src="assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-		<script th:src="@{assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js}" src="assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
-		<script th:src="@{assets/vendor_components/select2/dist/js/select2.full.js}" src="assets/vendor_components/select2/dist/js/select2.full.js"></script>
-		<script th:src="@{assets/vendor_plugins/input-mask/jquery.inputmask.js}" src="assets/vendor_plugins/input-mask/jquery.inputmask.js"></script>
-		<script th:src="@{assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js}" src="assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-		<script th:src="@{assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js}" src="assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"></script>
-		<script th:src="@{assets/vendor_components/moment/min/moment.min.js}" src="assets/vendor_components/moment/min/moment.min.js"></script>
-		<script th:src="@{assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js}" src="assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-		<script th:src="@{assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}" src="assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-		<script th:src="@{assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js}" src="assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-		<script th:src="@{assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js}" src="assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"></script>
-		<script th:src="@{assets/vendor_plugins/iCheck/icheck.min.js}" src="assets/vendor_plugins/iCheck/icheck.min.js"></script>
-		<script th:src="js/pages/advanced-form-element.js" src="js/pages/advanced-form-element.js"></script>
-		<script th:src="js/pages/validation.js" src="js/pages/validation.js"></script>
-    	<script th:src="js/pages/form-validation.js" src="js/pages/form-validation.js"></script>
-	</th:block>
-	<!-- Orbit Admin App -->
-	<script th:src="js/template.js" src="js/template.js"></script>
-    <script th:src="js/pages/toastr.js" src="js/pages/toastr.js"></script>
-    <script th:src="js/pages/notification.js" src="js/pages/notification.js"></script>
-	
-	<th:block th:if="${userSuccess == true}">
-			<script>
-				$(document).ready(function() {
-					$("#alertUserCreated").click();
-				});
-			</script>
-	</th:block>
-	<!-- Title Marquee -->
-	<script type="text/javascript">
-		let titleText = document.title;
+	  <!-- /.control-sidebar -->
 
-		function titleMarquee() {
+	  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+	  <div class="control-sidebar-bg"></div>
 
-			titleText = titleText.substring(1, titleText.length)
-					+ titleText.substring(0, 1);
-			document.title = titleText;
-			setTimeout("titleMarquee()", 450);
-		}
-	</script>
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- GLOBAL APP JS -->
+  <script src="js/vendors.min.js" th:src="@{/js/vendors.min.js}"></script>
+  <script src="assets/icons/feather-icons/feather.min.js"
+		  th:src="@{/assets/icons/feather-icons/feather.min.js}"></script>
+
+  <th:block th:if="${view == 'home'}">
+	  <!-- Hompage JS -->
+	  <script src="assets/vendor_components/easypiechart/dist/jquery.easypiechart.js"
+			  th:src="@{/assets/vendor_components/easypiechart/dist/jquery.easypiechart.js}"></script>
+	  <script src="assets/vendor_components/apexcharts-bundle/irregular-data-series.js"
+			  th:src="@{/assets/vendor_components/apexcharts-bundle/irregular-data-series.js}"></script>
+	  <script src="assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"
+			  th:src="@{/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js}"></script>
+	  <script src="js/pages/dashboard.js" th:src="@{/js/pages/dashboard.js}"></script>
+  </th:block>
+
+  <th:block th:if="${#strings.contains(view, 'list') or #strings.contains(view, 'show')}">
+	  <!-- Data Tables JS -->
+	  <script src="assets/vendor_components/datatable/datatables.min.js"
+			  th:src="@{/assets/vendor_components/datatable/datatables.min.js}"></script>
+	  <script src="js/pages/data-table.js" th:src="@{/js/pages/data-table.js}"></script>
+  </th:block>
+  <th:block th:if="${#strings.contains(view, 'create')}">
+	  <!-- FORMS JS -->
+	  <script src="assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"
+			  th:src="@{/assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js}"></script>
+	  <script src="assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"
+			  th:src="@{/assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js}"></script>
+	  <script src="assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"
+			  th:src="@{/assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js}"></script>
+	  <script src="assets/vendor_components/select2/dist/js/select2.full.js"
+			  th:src="@{/assets/vendor_components/select2/dist/js/select2.full.js}"></script>
+	  <script src="assets/vendor_plugins/input-mask/jquery.inputmask.js"
+			  th:src="@{/assets/vendor_plugins/input-mask/jquery.inputmask.js}"></script>
+	  <script src="assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"
+			  th:src="@{/assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js}"></script>
+	  <script src="assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"
+			  th:src="@{/assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js}"></script>
+	  <script src="assets/vendor_components/moment/min/moment.min.js"
+			  th:src="@{/assets/vendor_components/moment/min/moment.min.js}"></script>
+	  <script src="assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"
+			  th:src="@{/assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js}"></script>
+	  <script src="assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"
+			  th:src="@{/assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+	  <script src="assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"
+			  th:src="@{/assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js}"></script>
+	  <script src="assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"
+			  th:src="@{/assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js}"></script>
+	  <script src="assets/vendor_plugins/iCheck/icheck.min.js"
+			  th:src="@{/assets/vendor_plugins/iCheck/icheck.min.js}"></script>
+	  <script src="js/pages/advanced-form-element.js" th:src="@{/js/pages/advanced-form-element.js}"></script>
+	  <script src="js/pages/validation.js" th:src="@{/js/pages/validation.js}"></script>
+	  <script src="js/pages/form-validation.js" th:src="@{/js/pages/form-validation.js}"></script>
+  </th:block>
+  <!-- Orbit Admin App -->
+  <script src="js/template.js" th:src="@{/js/template.js}"></script>
+  <script src="js/pages/toastr.js" th:src="@{/js/pages/toastr.js}"></script>
+  <script src="js/pages/notification.js" th:src="@{/js/pages/notification.js}"></script>
+
+  <th:block th:if="${userSuccess == true}">
+	  <script>
+		  $(document).ready(function () {
+			  $("#alertUserCreated").click();
+		  });
+	  </script>
+  </th:block>
+  <!-- Title Marquee -->
+  <script type="text/javascript">
+	  let titleText = document.title;
+
+	  function titleMarquee() {
+
+		  titleText = titleText.substring(1, titleText.length)
+				  + titleText.substring(0, 1);
+		  document.title = titleText;
+		  setTimeout("titleMarquee()", 450);
+	  }
+  </script>
 	
 </body>
 </html>

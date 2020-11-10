@@ -1,0 +1,143 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Main content -->
+<section class="content" th:fragment="content">
+    <div class="row">
+        <div class="box">
+            <!-- box-header -->
+            <div class="box-header with-border text-center text-uppercase">
+                <h4 class="box-title">Create a New User</h4>
+                <span class="text-danger"><c:if
+                        test="${form.resultat != null}"><br/>▶STATUS: ${form.resultat}</c:if></span>
+            </div>
+            <!-- /.box-header -->
+
+            <!-- box-body -->
+            <form action="<c:url value=" class="form"
+            /users/new" />" method="post">
+            <div class="box-body">
+                <h4 class="box-title text-info"><i class="ti-user mr-15"></i> Personal Info</h4>
+                <hr class="my-15">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                <c:out default="First Name" value="${form.erreurs['prenom']}"/>
+                            </label>
+                            <input ${user.prenom} class="form-control" name="prenom" type="text" value="<c:out value=""/>"
+                            placeholder="First Name" required data-validation-required-message="This field is required">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                <c:out default="Last Name" value="${form.erreurs['nom']}"/>
+                            </label>
+                            <input ${user.nom} class="form-control" name="nom" type="text" value="<c:out value=""/>"
+                            placeholder="Last Name" required data-validation-required-message="This field is required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                <c:out default="E-mail" value="${form.erreurs['email']}"/>
+                            </label>
+                            <input ${user.email} class="form-control" name="email" type="text" value="<c:out value=""/>"
+                            placeholder="E-mail" required data-validation-required-message="This field is required">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                <c:out default="Username" value="${form.erreurs['username']}"/>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">@</span>
+                                <input ${user.username} class="form-control" name="username" type="text"
+                                       value="<c:out value=""/>" placeholder="Username" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="box-title text-info"><i class="ti-save mr-15"></i> Requirements</h4>
+                <hr class="my-15">
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h5>
+                                <c:out default="Password Input Field" value="${form.erreurs['password']}"/>
+                                <span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input class="form-control" data-validation-required-message="This field is required"
+                                       name="password" required type="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h5>
+                                <c:out default="Repeat Password Input Field" value="${form.erreurs['confirmpass']}"/>
+                                <span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input class="form-control" data-validation-match-match="password" name="confirmpass"
+                                       required type="password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                <c:out default="Role" value="${form.erreurs['role']}"/>
+                            </label>
+                            <select class="form-control select2" name="role" required style="width: 100%;">
+                                <c:forEach items="${ sessionScope.rolesList }" var="role" varStatus="theCount">
+                                    <c:choose>
+                                        <c:when test="${theCount.index == 0}">
+                                            <option selected="selected" value="${ role.id }">${ role.libelle }</option>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <option value="${ role.id }">${ role.libelle }</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                <c:out default="State of The Account" value="${form.erreurs['status']}"/>
+                            </label>
+                            <select class="selectpicker mb-20 mr-10" data-style="btn-warning " name="status">
+                                <option data-tokens="1" value="1">Activated</option>
+                                <option data-tokens="0" value="0">Disabled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+                <button class="btn btn-rounded btn-warning btn-outline mr-1" type="reset">
+                    <i class="ti-trash"></i> Cancel
+                </button>
+                <button class="btn btn-rounded btn-primary btn-outline" type="submit">
+                    <i class="ti-save-alt"></i> Save
+                </button>
+            </div>
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.row -->
+
+</section>
+<!-- /.content -->
+</html>
