@@ -40,7 +40,7 @@ public class UserController {
     private final IRolesDao roleRepository;
     ModelAndView render;
     // Simulatin du Role de L'utilisateur
-    String role = "SUPER_ADMIN";
+    String role = "SUPERADMIN";
     //================ TEMPLATE AND VIEW PARAMETERS ================
     private String pageTitle = "SEN FORAGE • LIST OF USERS";
     private String view = "user/list";

@@ -1,14 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="services.UrlHelper"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%
-response.setHeader("Cache-Control","no-store"); //HTTP 1.1
-response.setHeader("Pragma","no-cache"); //HTTP 1.0
-response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
-%>
-<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!-- /* === 🌌 WELCOME TO ORBIT WP REMIX 🌌  === -->
     <!-- *                      -->
@@ -30,14 +20,13 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
     <meta content="no-cache" http-equiv="Cache-Control">
     <meta content="Sat, 01 Dec 2001 00:00:00 GMT" http-equiv="Expires">
     <title>LOGIN | WELCOME TO SEN-FORAGE •&nbsp;</title>
-    <link href=<c:out rel="icon" value="${UrlHelper.getImgRepos()}favicon.ico"/>
-    />
-    <link href="${UrlHelper.getLoginRepos() }style.css" rel="stylesheet">
+    <link rel="icon" th:href="@{/images/favicon.ico}"/>
+    <link th:href="@{/login/style.css}" href="/login/style.css" rel="stylesheet">
 </head>
 <body onload="titleMarquee()">
-<c:if test="${sessionScope.actualUser != null}">
-    <c:redirect>home</c:redirect>
-</c:if>
+<!--<c:if test="${sessionScope.actualUser != null}">-->
+<!--    <c:redirect>home</c:redirect>-->
+<!--</c:if>-->
 <div class="scroll-down">
     WELCOME TO SEN FORAGE<br/>
     DÉFILER VERS LE BAS
@@ -51,23 +40,27 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
         <div class="modal-left">
             <h1 class="modal-title">Bienvenue à Sen Forage!</h1>
             <p class="modal-desc">
-                <c:out default="Content de vous voir 🤗! Identifiez-vous
-					pour accéder au système." value="${form.erreurs['state']}"/>
-                <span class="text-danger"><br/><c:if
-                        test="${form.resultat != null}">▶STATUS: ${form.resultat}</c:if></span>
+                    Content de vous voir 🤗! Identifiez-vous
+                    pour accéder au système.
+                <span class="text-danger" th:if="${param.error}">
+                    <br/>▶STATUS: Invalid username and password.
+<!--                    <th:block th:each="error : ${#fields.errors('global')}" th:text="${error}">-->
+
+<!--                    </th:block>-->
+                </span>
             </p>
-            <form action="<c:url value="
-            /login" />" method="post">
+            <form action="" method="post">
             <div class="input-block">
-                <label class="input-label" for="email">
-                    <c:out default="Votre Email" value="${form.erreurs['email']}"/>
+<!--                <label class="input-label" for="email" th:if="${#fields.hasErrors('email')}">-->
+                <label class="input-label" for="email" >
+                    Verify Email
                 </label>
-                <input ${user.email} id="email" name="email" placeholder="Email" type="email" value="<c:out value=""/>"
-                size="20" maxlength="60" />
+                <input id="email" name="username" placeholder="Email" type="email" />
             </div>
             <div class="input-block">
-                <label class="input-label" for="password">
-                    <c:out default="Votre Password" value="${form.erreurs['password']}"/>
+<!--                <label class="input-label" for="password"  th:if="${#fields.hasErrors('password')}">-->
+                <label class="input-label" for="password" >
+                    Verify Password
                 </label>
                 <input id="password" maxlength="20" name="password" placeholder="Password: Ex(@Abcdf12)" size="20"
                        type="password" value=""/>
@@ -84,7 +77,7 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
             </p>
         </div>
         <div class="modal-right">
-            <img alt="" src="${UrlHelper.getLoginRepos() }img/water.svg">
+            <img alt="" th:src="@{/login/img/water.svg}" src="/login/img/water.svg">
         </div>
         <button class="icon-button close-button">
             <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
@@ -95,7 +88,7 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
     <button class="modal-button">Cliquez ici pour vous identifier</button>
 </div>
 
-<script src="${UrlHelper.getLoginRepos() }custom.js"></script>
+<script th:href="@{/login/custom.js}" src="/login/custom.js"></script>
 <script type="text/javascript">
     var titleText = document.title;
 

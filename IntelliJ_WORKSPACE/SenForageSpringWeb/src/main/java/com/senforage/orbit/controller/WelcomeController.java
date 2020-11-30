@@ -18,6 +18,7 @@ package com.senforage.orbit.controller;
 import com.senforage.orbit.dao.IClientDao;
 import com.senforage.orbit.dao.IUserDao;
 import com.senforage.orbit.dao.IVillageDao;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,11 +46,12 @@ public class WelcomeController {
     }
 
     @GetMapping({"", "/"})
-    public ModelAndView index() {
+    public ModelAndView index(Authentication authenticatedPerson) {
         //======================== LOADING THE SPA TEMPLATE =============================
         ModelAndView render = new ModelAndView("template/OrbitLayout");
-        String pageTitle = "SEN FORAGE • &nbsp;Dashboard";
-        String role = "SUPER_ADMIN";
+        render.addObject("connectedUser", authenticatedPerson);
+        String pageTitle = "SEN FORAGE • Dashboard";
+        String role = "SUPERADMIN";
         String view = "home";
         //======================== ------------------------ =============================
 
